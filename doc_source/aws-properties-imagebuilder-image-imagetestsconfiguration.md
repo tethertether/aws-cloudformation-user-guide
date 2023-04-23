@@ -25,13 +25,14 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ## Properties<a name="aws-properties-imagebuilder-image-imagetestsconfiguration-properties"></a>
 
 `ImageTestsEnabled`  <a name="cfn-imagebuilder-image-imagetestsconfiguration-imagetestsenabled"></a>
-Defines if tests should be executed when building this image\.  
+Determines if tests should run after building the image\. Image Builder defaults to enable tests to run following the image build, before image distribution\.  
 *Required*: No  
 *Type*: Boolean  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `TimeoutMinutes`  <a name="cfn-imagebuilder-image-imagetestsconfiguration-timeoutminutes"></a>
 The maximum time in minutes that tests are permitted to run\.  
+The timeoutMinutes attribute is not currently active\. This value is ignored\.
 *Required*: No  
 *Type*: Integer  
 *Minimum*: `60`  

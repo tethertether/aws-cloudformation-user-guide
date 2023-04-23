@@ -14,7 +14,9 @@ To declare this entity in your AWS CloudFormation template, use the following sy
   "Properties" : {
       "[DestinationConfiguration](#cfn-ivs-recordingconfiguration-destinationconfiguration)" : DestinationConfiguration,
       "[Name](#cfn-ivs-recordingconfiguration-name)" : String,
-      "[Tags](#cfn-ivs-recordingconfiguration-tags)" : [ [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html), ... ]
+      "[RecordingReconnectWindowSeconds](#cfn-ivs-recordingconfiguration-recordingreconnectwindowseconds)" : Integer,
+      "[Tags](#cfn-ivs-recordingconfiguration-tags)" : [ [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html), ... ],
+      "[ThumbnailConfiguration](#cfn-ivs-recordingconfiguration-thumbnailconfiguration)" : ThumbnailConfiguration
     }
 }
 ```
@@ -27,8 +29,11 @@ Properties:
   [DestinationConfiguration](#cfn-ivs-recordingconfiguration-destinationconfiguration): 
     DestinationConfiguration
   [Name](#cfn-ivs-recordingconfiguration-name): String
+  [RecordingReconnectWindowSeconds](#cfn-ivs-recordingconfiguration-recordingreconnectwindowseconds): Integer
   [Tags](#cfn-ivs-recordingconfiguration-tags): 
     - [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)
+  [ThumbnailConfiguration](#cfn-ivs-recordingconfiguration-thumbnailconfiguration): 
+    ThumbnailConfiguration
 ```
 
 ## Properties<a name="aws-resource-ivs-recordingconfiguration-properties"></a>
@@ -40,12 +45,21 @@ A destination configuration contains information about where recorded video will
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `Name`  <a name="cfn-ivs-recordingconfiguration-name"></a>
-An arbitrary string \(a nickname\) assigned to a recording configuration that helps the customer identify that resource\. The value does not need to be unique\.  
+Recording\-configuration name\. The value does not need to be unique\.  
 *Required*: No  
 *Type*: String  
 *Minimum*: `0`  
 *Maximum*: `128`  
 *Pattern*: `^[a-zA-Z0-9-_]*$`  
+*Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
+
+`RecordingReconnectWindowSeconds`  <a name="cfn-ivs-recordingconfiguration-recordingreconnectwindowseconds"></a>
+If a broadcast disconnects and then reconnects within the specified interval, the multiple streams will be considered a single broadcast and merged together\.  
+*Default*: `0`  
+*Required*: No  
+*Type*: Integer  
+*Minimum*: `0`  
+*Maximum*: `300`  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `Tags`  <a name="cfn-ivs-recordingconfiguration-tags"></a>
@@ -54,6 +68,12 @@ For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/la
 *Required*: No  
 *Type*: List of [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
+`ThumbnailConfiguration`  <a name="cfn-ivs-recordingconfiguration-thumbnailconfiguration"></a>
+A thumbnail configuration enables/disables the recording of thumbnails for a live session and controls the interval at which thumbnails are generated for the live session\. See the [ThumbnailConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ivs-recordingconfiguration-thunbnailconfiguration.html) property type for more information\.  
+*Required*: No  
+*Type*: [ThumbnailConfiguration](aws-properties-ivs-recordingconfiguration-thumbnailconfiguration.md)  
+*Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 ## Return values<a name="aws-resource-ivs-recordingconfiguration-return-values"></a>
 
@@ -108,6 +128,10 @@ The following examples specify an Amazon IVS Channel that records live\-channel 
               "Ref": "S3Bucket"
             }
           }
+        },
+        "ThumbnailConfiguration": {
+          "RecordingMode": "INTERVAL",
+          "TargetIntervalSeconds": 60
         }
       }
     },
@@ -140,6 +164,9 @@ Resources:
      DestinationConfiguration:
        S3:
          BucketName: !Ref S3Bucket
+     ThumbnailConfiguration:
+       RecordingMode: INTERVAL
+       TargetIntervalSeconds: 60
 
  Channel:
    Type: AWS::IVS::Channel

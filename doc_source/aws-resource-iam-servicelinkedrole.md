@@ -59,18 +59,26 @@ The description of the role\.
 *Required*: No  
 *Type*: String  
 *Maximum*: `1000`  
-*Pattern*: `[\p{L}\p{M}\p{Z}\p{S}\p{N}\p{P}]*`  
+*Pattern*: `[\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]*`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
+## Return values<a name="aws-resource-iam-servicelinkedrole-return-values"></a>
+
+### Ref<a name="aws-resource-iam-servicelinkedrole-return-values-ref"></a>
+
+ When you pass the logical ID of this resource to the intrinsic `Ref` function, `Ref` returns the `RoleName` created for the service\-linked role appended with an underscore followed by the `CustomSuffix`\. For example: `AWSServiceRoleForAutoScaling_TestSuffix`\.
+
+For more information about using the `Ref` function, see [Ref](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html)\.
 
 ## Examples<a name="aws-resource-iam-servicelinkedrole--examples"></a>
 
 
 
-### Create an IAM Service\-Linked Role for Auto Scaling<a name="aws-resource-iam-servicelinkedrole--examples--Create_an_IAM_Service-Linked_Role_for_Auto_Scaling"></a>
+### IAM Service\-Linked Role for Auto Scaling<a name="aws-resource-iam-servicelinkedrole--examples--_Service-Linked_Role_for_Auto_Scaling"></a>
 
 The following example creates a service\-linked role that can be assumed by the Auto Scaling service\.
 
-#### JSON<a name="aws-resource-iam-servicelinkedrole--examples--Create_an_IAM_Service-Linked_Role_for_Auto_Scaling--json"></a>
+#### JSON<a name="aws-resource-iam-servicelinkedrole--examples--_Service-Linked_Role_for_Auto_Scaling--json"></a>
 
 ```
 {
@@ -95,7 +103,7 @@ The following example creates a service\-linked role that can be assumed by the 
 }
 ```
 
-#### YAML<a name="aws-resource-iam-servicelinkedrole--examples--Create_an_IAM_Service-Linked_Role_for_Auto_Scaling--yaml"></a>
+#### YAML<a name="aws-resource-iam-servicelinkedrole--examples--_Service-Linked_Role_for_Auto_Scaling--yaml"></a>
 
 ```
 Description: SLR resource create test - Auto Scaling

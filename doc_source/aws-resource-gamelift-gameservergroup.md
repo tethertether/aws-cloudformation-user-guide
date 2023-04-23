@@ -1,12 +1,20 @@
 # AWS::GameLift::GameServerGroup<a name="aws-resource-gamelift-gameservergroup"></a>
 
- **This operation is used with the Amazon GameLift FleetIQ solution\.** 
+ **This operation is used with the Amazon GameLift FleetIQ solution and game server groups\.** 
 
-The `AWS::GameLift::GameServerGroup` resource creates a GameLift FleetIQ game server group and EC2 Auto Scaling group to manage game hosting on a collection of Amazon EC2 instances in your AWS account\. You can view the status of your game server groups in the GameLift console\. Game server group metrics and events are emitted to Amazon CloudWatch\.
+Creates a GameLift FleetIQ game server group for managing game hosting on a collection of Amazon EC2 instances for game hosting\. This operation creates the game server group, creates an Auto Scaling group in your AWS account, and establishes a link between the two groups\. You can view the status of your game server groups in the GameLift console\. Game server group metrics and events are emitted to Amazon CloudWatch\.
 
-To establish this resource, you must have: 
-+ An Amazon EC2 launch template that specifies how to launch Amazon EC2 instances with your game server build\. For more information, see [Launching an Instance from a Launch Template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html) in the *Amazon EC2 User Guide*\. 
-+ An IAM role with limited access to your AWS account that allows GameLift FleetIQ to create and interact with the Auto Scaling group\. For more information, see [Create IAM roles for cross\-service interaction](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-iam-permissions-roles.html) in the *GameLift FleetIQ Developer Guide*\.
+Before creating a new game server group, you must have the following: 
++ An Amazon EC2 launch template that specifies how to launch Amazon EC2 instances with your game server build\. For more information, see [ Launching an Instance from a Launch Template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html) in the *Amazon EC2 User Guide*\. 
++ An IAM role that extends limited access to your AWS account to allow GameLift FleetIQ to create and interact with the Auto Scaling group\. For more information, see [Create IAM roles for cross\-service interaction](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-iam-permissions-roles.html) in the *GameLift FleetIQ Developer Guide*\.
+
+To create a new game server group, specify a unique group name, IAM role and Amazon EC2 launch template, and provide a list of instance types that can be used in the group\. You must also set initial maximum and minimum limits on the group's instance count\. You can optionally set an Auto Scaling policy with target tracking based on a GameLift FleetIQ metric\.
+
+Once the game server group and corresponding Auto Scaling group are created, you have full access to change the Auto Scaling group's configuration as needed\. Several properties that are set when creating a game server group, including maximum/minimum size and auto\-scaling policy settings, must be updated directly in the Auto Scaling group\. Keep in mind that some Auto Scaling group properties are periodically updated by GameLift FleetIQ as part of its balancing activities to optimize for availability and cost\.
+
+ **Learn more** 
+
+ [GameLift FleetIQ Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html) 
 
 ## Syntax<a name="aws-resource-gamelift-gameservergroup-syntax"></a>
 
@@ -77,10 +85,10 @@ Indicates how GameLift FleetIQ balances the use of Spot Instances and On\-Demand
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `DeleteOption`  <a name="cfn-gamelift-gameservergroup-deleteoption"></a>
-The type of delete to perform\. Options include the following:  
-+  `SAFE_DELETE` – \(default\) Terminates the game server group and EC2 Auto Scaling group only when it has no game servers that are in `UTILIZED` status\.
-+  `FORCE_DELETE` – Terminates the game server group, including all active game servers regardless of their utilization status, and the EC2 Auto Scaling group\. 
-+  `RETAIN` – Does a safe delete of the game server group but retains the EC2 Auto Scaling group as is\.
+The type of delete to perform\. To delete a game server group, specify the `DeleteOption`\. Options include the following:  
++  `SAFE_DELETE` – \(default\) Terminates the game server group and Amazon EC2 Auto Scaling group only when it has no game servers that are in `UTILIZED` status\.
++  `FORCE_DELETE` – Terminates the game server group, including all active game servers regardless of their utilization status, and the Amazon EC2 Auto Scaling group\. 
++  `RETAIN` – Does a safe delete of the game server group but retains the Amazon EC2 Auto Scaling group as is\.
 *Required*: No  
 *Type*: String  
 *Allowed values*: `FORCE_DELETE | RETAIN | SAFE_DELETE`  
@@ -103,35 +111,35 @@ A flag that indicates whether instances in the game server group are protected f
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `InstanceDefinitions`  <a name="cfn-gamelift-gameservergroup-instancedefinitions"></a>
-The set of EC2 instance types that GameLift FleetIQ can use when balancing and automatically scaling instances in the corresponding Auto Scaling group\.   
+The set of Amazon EC2 instance types that GameLift FleetIQ can use when balancing and automatically scaling instances in the corresponding Auto Scaling group\.   
 *Required*: Yes  
 *Type*: List of [InstanceDefinition](aws-properties-gamelift-gameservergroup-instancedefinition.md)  
 *Maximum*: `20`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `LaunchTemplate`  <a name="cfn-gamelift-gameservergroup-launchtemplate"></a>
-The EC2 launch template that contains configuration settings and game server code to be deployed to all instances in the game server group\. You can specify the template using either the template name or ID\. For help with creating a launch template, see [Creating a Launch Template for an Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html) in the *Amazon EC2 Auto Scaling User Guide*\. After the Auto Scaling group is created, update this value directly in the Auto Scaling group using the AWS console or APIs\.  
+The Amazon EC2 launch template that contains configuration settings and game server code to be deployed to all instances in the game server group\. You can specify the template using either the template name or ID\. For help with creating a launch template, see [Creating a Launch Template for an Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html) in the *Amazon Elastic Compute Cloud Auto Scaling User Guide*\. After the Auto Scaling group is created, update this value directly in the Auto Scaling group using the AWS console or APIs\.  
 If you specify network interfaces in your launch template, you must explicitly set the property `AssociatePublicIpAddress` to "true"\. If no network interface is specified in the launch template, GameLift FleetIQ uses your account's default VPC\.
 *Required*: Yes  
 *Type*: [LaunchTemplate](aws-properties-gamelift-gameservergroup-launchtemplate.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `MaxSize`  <a name="cfn-gamelift-gameservergroup-maxsize"></a>
-The maximum number of instances allowed in the EC2 Auto Scaling group\. During automatic scaling events, GameLift FleetIQ and EC2 do not scale up the group above this maximum\. After the Auto Scaling group is created, update this value directly in the Auto Scaling group using the AWS console or APIs\.  
+The maximum number of instances allowed in the Amazon EC2 Auto Scaling group\. During automatic scaling events, GameLift FleetIQ and EC2 do not scale up the group above this maximum\. After the Auto Scaling group is created, update this value directly in the Auto Scaling group using the AWS console or APIs\.  
 *Required*: No  
 *Type*: Double  
 *Minimum*: `1`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `MinSize`  <a name="cfn-gamelift-gameservergroup-minsize"></a>
-The minimum number of instances allowed in the EC2 Auto Scaling group\. During automatic scaling events, GameLift FleetIQ and EC2 do not scale down the group below this minimum\. In production, this value should be set to at least 1\. After the Auto Scaling group is created, update this value directly in the Auto Scaling group using the AWS console or APIs\.  
+The minimum number of instances allowed in the Amazon EC2 Auto Scaling group\. During automatic scaling events, GameLift FleetIQ and Amazon EC2 do not scale down the group below this minimum\. In production, this value should be set to at least 1\. After the Auto Scaling group is created, update this value directly in the Auto Scaling group using the AWS console or APIs\.  
 *Required*: No  
 *Type*: Double  
 *Minimum*: `0`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `RoleArn`  <a name="cfn-gamelift-gameservergroup-rolearn"></a>
-The Amazon Resource Name \([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)\) for an IAM role that allows Amazon GameLift to access your EC2 Auto Scaling groups\.  
+The Amazon Resource Name \([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)\) for an IAM role that allows Amazon GameLift to access your Amazon EC2 Auto Scaling groups\.  
 *Required*: Yes  
 *Type*: String  
 *Minimum*: `1`  
@@ -140,10 +148,10 @@ The Amazon Resource Name \([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Tags`  <a name="cfn-gamelift-gameservergroup-tags"></a>
-An array of key\-value pairs to apply to this resource\.  
-For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)\.  
+A list of labels to assign to the new game server group resource\. Tags are developer\-defined key\-value pairs\. Tagging AWS resources is useful for resource management, access management, and cost allocation\. For more information, see [ Tagging AWS Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the * AWS General Reference*\. Once the resource is created, you can use TagResource, UntagResource, and ListTagsForResource to add, remove, and view tags, respectively\. The maximum tag limit may be lower than stated\. See the AWS General Reference for actual tagging limits\.  
 *Required*: No  
 *Type*: List of [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)  
+*Maximum*: `200`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `VpcSubnets`  <a name="cfn-gamelift-gameservergroup-vpcsubnets"></a>
@@ -157,10 +165,6 @@ A list of virtual private cloud \(VPC\) subnets to use with instances in the gam
 
 ### Ref<a name="aws-resource-gamelift-gameservergroup-return-values-ref"></a>
 
- When you pass the logical ID of this resource to the intrinsic `Ref` function, `Ref` returns the game server group Amazon Resource Name \([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)\) \. For example: `arn:aws:gamelift:us-west-2::GameServerGroup/my-gsg`\.
-
-For more information about using the `Ref` function, see [Ref](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html)\.
-
 ### Fn::GetAtt<a name="aws-resource-gamelift-gameservergroup-return-values-fn--getatt"></a>
 
 The `Fn::GetAtt` intrinsic function returns a value for a specified attribute of this type\. The following are the available attributes and sample return values\.
@@ -170,11 +174,7 @@ For more information about using the `Fn::GetAtt` intrinsic function, see [Fn::G
 #### <a name="aws-resource-gamelift-gameservergroup-return-values-fn--getatt-fn--getatt"></a>
 
 `AutoScalingGroupArn`  <a name="AutoScalingGroupArn-fn::getatt"></a>
-The Amazon Resource Name \([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html)\) for the Auto Scaling Group\. For example: `arn:aws:autoscaling:us-west-2::autoScalingGroup:1111aaaa-22bb-33cc-44dd-5555eeee66ff:autoScalingGroupName/my-asg`\.
+A unique identifier for the auto scaling group\.
 
 `GameServerGroupArn`  <a name="GameServerGroupArn-fn::getatt"></a>
-The ARN for the game server group\. For example: `arn:aws:gamelift:us-west-2::GameServerGroup/my-gsg`\.
-
-## See also<a name="aws-resource-gamelift-gameservergroup--seealso"></a>
-+ [GameLift FleetIQ Developer Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/)
-+ [Launching an Instance from a Launch Template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html) in the *Amazon EC2 User Guide*
+A unique identifier for the game server group\.

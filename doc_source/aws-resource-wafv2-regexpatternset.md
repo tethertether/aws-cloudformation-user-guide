@@ -3,7 +3,7 @@
 **Note**  
 This is the latest version of **AWS WAF**, named AWS WAFV2, released in November, 2019\. For information, including how to migrate your AWS WAF resources from the prior release, see the [AWS WAF Developer Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html)\. 
 
-Use a `RegexPatternSet` to have AWS WAF inspect a web request component for a specific set of regular expression patterns\. 
+Use an [AWS::WAFv2::RegexPatternSet](#aws-resource-wafv2-regexpatternset) to have AWS WAF inspect a web request component for a specific set of regular expression patterns\. 
 
 You use a regex pattern set by providing its Amazon Resource Name \(ARN\) to the rule statement `RegexPatternSetReferenceStatement`, when you add a rule to a rule group or web ACL\. 
 
@@ -52,7 +52,7 @@ A description of the set that helps with identification\.
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Name`  <a name="cfn-wafv2-regexpatternset-name"></a>
-The descriptive name of the set\. You cannot change the name after you create the set\.  
+The name of the set\. You cannot change the name after you create the set\.  
 *Required*: No  
 *Type*: String  
 *Minimum*: `1`  
@@ -67,7 +67,7 @@ The regular expression patterns in the set\.
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Scope`  <a name="cfn-wafv2-regexpatternset-scope"></a>
-Specifies whether this is for an AWS CloudFront distribution or for a regional application\. A regional application can be an Application Load Balancer \(ALB\), an Amazon API Gateway REST API, or an AWS AppSync GraphQL API\. Valid Values are `CLOUDFRONT` and `REGIONAL`\.  
+Specifies whether this is for an Amazon CloudFront distribution or for a regional application\. A regional application can be an Application Load Balancer \(ALB\), an Amazon API Gateway REST API, an AWS AppSync GraphQL API, or an Amazon Cognito user pool\. Valid Values are `CLOUDFRONT` and `REGIONAL`\.  
 For `CLOUDFRONT`, you must create your WAFv2 resources in the US East \(N\. Virginia\) Region, `us-east-1`\.
 *Required*: Yes  
 *Type*: String  
@@ -86,7 +86,7 @@ To modify tags on existing resources, use the AWS WAF APIs or command line inter
 
 The `Ref` for the resource, containing the resource name, physical ID, and scope, formatted as follows: `name|id|scope`\.
 
-For example: `my-webacl-name|1234a1a-a1b1-12a1-abcd-a123b123456|REGIONAL`
+For example: `my-webacl-name|1234a1a-a1b1-12a1-abcd-a123b123456|REGIONAL`\.
 
 ### Fn::GetAtt<a name="aws-resource-wafv2-regexpatternset-return-values-fn--getatt"></a>
 
@@ -106,12 +106,24 @@ The ID of the regex pattern set\.
 
 The following shows an example regex pattern set specification\. 
 
+#### YAML<a name="aws-resource-wafv2-regexpatternset--examples--Create_a_regex_pattern_set--yaml"></a>
+
+```
+ ExampleRegexPatternSet:
+    Type: AWS::WAFv2::RegexPatternSet
+    Properties:
+      Name: ExampleRegexPatternSet
+      Scope: REGIONAL
+      Description: This is an example RegexPatternSet
+      RegularExpressionList:
+        - ^foobar$
+        - ^example$
+```
+
 #### JSON<a name="aws-resource-wafv2-regexpatternset--examples--Create_a_regex_pattern_set--json"></a>
 
 ```
-"Description": "Create RegexPatternSet example",
-  "Resources": {
-    "ExampleRegexPatternSet": {
+ "ExampleRegexPatternSet": {
       "Type": "AWS::WAFv2::RegexPatternSet",
       "Properties": {
         "Name": "ExampleRegexPatternSet1",
@@ -123,21 +135,4 @@ The following shows an example regex pattern set specification\.
         ]
       }
     }
-  }
-```
-
-#### YAML<a name="aws-resource-wafv2-regexpatternset--examples--Create_a_regex_pattern_set--yaml"></a>
-
-```
-Description: Create RegexPatternSet example
-Resources:
-  ExampleRegexPatternSet:
-    Type: AWS::WAFv2::RegexPatternSet
-    Properties:
-      Name: ExampleRegexPatternSet
-      Scope: REGIONAL
-      Description: This is an example RegexPatternSet
-      RegularExpressionList:
-        - ^foobar$
-        - ^example$
 ```

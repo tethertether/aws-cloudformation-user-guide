@@ -71,6 +71,6 @@ If you specify settings for an `SRV` record and if you specify values for `AWS_I
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 ## See also<a name="aws-properties-servicediscovery-service-dnsrecord--seealso"></a>
-+  [Return values](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-service.html#aws-resource-servicediscovery-service-return-values) in the topic [AWS::ServiceDiscovery::Service](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-service.html) 
-+  [DnsRecord](https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html) in the *AWS Cloud Map API Reference* 
++  [Return values](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-service.html#aws-resource-servicediscovery-service-return-values) in the topic [AWS::ServiceDiscovery::Service](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-servicediscovery-service.html)
++ [DnsRecord](https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html) in the *AWS Cloud Map API Reference*
 

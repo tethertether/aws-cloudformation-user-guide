@@ -1,6 +1,6 @@
 # AWS::QuickSight::DataSet<a name="aws-resource-quicksight-dataset"></a>
 
-Creates a dataset\.
+Creates a dataset\. This operation doesn't support datasets that include uploaded files as a source\.
 
 ## Syntax<a name="aws-resource-quicksight-dataset-syntax"></a>
 
@@ -16,6 +16,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
       "[ColumnGroups](#cfn-quicksight-dataset-columngroups)" : [ ColumnGroup, ... ],
       "[ColumnLevelPermissionRules](#cfn-quicksight-dataset-columnlevelpermissionrules)" : [ ColumnLevelPermissionRule, ... ],
       "[DataSetId](#cfn-quicksight-dataset-datasetid)" : String,
+      "[DataSetUsageConfiguration](#cfn-quicksight-dataset-datasetusageconfiguration)" : DataSetUsageConfiguration,
       "[FieldFolders](#cfn-quicksight-dataset-fieldfolders)" : {Key : Value, ...},
       "[ImportMode](#cfn-quicksight-dataset-importmode)" : String,
       "[IngestionWaitPolicy](#cfn-quicksight-dataset-ingestionwaitpolicy)" : IngestionWaitPolicy,
@@ -40,6 +41,8 @@ Properties:
   [ColumnLevelPermissionRules](#cfn-quicksight-dataset-columnlevelpermissionrules): 
     - ColumnLevelPermissionRule
   [DataSetId](#cfn-quicksight-dataset-datasetid): String
+  [DataSetUsageConfiguration](#cfn-quicksight-dataset-datasetusageconfiguration): 
+    DataSetUsageConfiguration
   [FieldFolders](#cfn-quicksight-dataset-fieldfolders): 
     Key : Value
   [ImportMode](#cfn-quicksight-dataset-importmode): String
@@ -70,7 +73,7 @@ The AWS account ID\.
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `ColumnGroups`  <a name="cfn-quicksight-dataset-columngroups"></a>
-Groupings of columns that work together in certain QuickSight features\. Currently, only geospatial hierarchy is supported\.  
+Groupings of columns that work together in certain Amazon QuickSight features\. Currently, only geospatial hierarchy is supported\.  
 *Required*: No  
 *Type*: List of [ColumnGroup](aws-properties-quicksight-dataset-columngroup.md)  
 *Maximum*: `8`  
@@ -87,6 +90,12 @@ An ID for the dataset that you want to create\. This ID is unique per AWS Region
 *Required*: No  
 *Type*: String  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
+
+`DataSetUsageConfiguration`  <a name="cfn-quicksight-dataset-datasetusageconfiguration"></a>
+The usage configuration to apply to child datasets that reference this dataset as a source\.  
+*Required*: No  
+*Type*: [DataSetUsageConfiguration](aws-properties-quicksight-dataset-datasetusageconfiguration.md)  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `FieldFolders`  <a name="cfn-quicksight-dataset-fieldfolders"></a>
 The folder that contains fields and nested subfolders for your dataset\.  

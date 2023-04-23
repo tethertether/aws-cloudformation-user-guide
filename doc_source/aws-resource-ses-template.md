@@ -29,10 +29,19 @@ Properties:
 ## Properties<a name="aws-resource-ses-template-properties"></a>
 
 `Template`  <a name="cfn-ses-template-template"></a>
-The content of the email, composed of a subject line, an HTML part, and a text\-only part\.  
+The content of the email, composed of a subject line and either an HTML part or a text\-only part\.  
 *Required*: No  
 *Type*: [Template](aws-properties-ses-template-template.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
+## Return values<a name="aws-resource-ses-template-return-values"></a>
+
+### Fn::GetAtt<a name="aws-resource-ses-template-return-values-fn--getatt"></a>
+
+#### <a name="aws-resource-ses-template-return-values-fn--getatt-fn--getatt"></a>
+
+`Id`  <a name="Id-fn::getatt"></a>
+Property description not available\.
 
 ## Examples<a name="aws-resource-ses-template--examples"></a>
 

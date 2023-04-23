@@ -15,9 +15,9 @@ To declare this entity in your AWS CloudFormation template, use the following sy
   "[ExecutionRole](#cfn-sagemaker-userprofile-usersettings-executionrole)" : String,
   "[JupyterServerAppSettings](#cfn-sagemaker-userprofile-usersettings-jupyterserverappsettings)" : JupyterServerAppSettings,
   "[KernelGatewayAppSettings](#cfn-sagemaker-userprofile-usersettings-kernelgatewayappsettings)" : KernelGatewayAppSettings,
+  "[RStudioServerProAppSettings](#cfn-sagemaker-userprofile-usersettings-rstudioserverproappsettings)" : RStudioServerProAppSettings,
   "[SecurityGroups](#cfn-sagemaker-userprofile-usersettings-securitygroups)" : [ String, ... ],
-  "[SharingSettings](#cfn-sagemaker-userprofile-usersettings-sharingsettings)" : SharingSettings,
-  "[TensorBoardAppSettings](#cfn-sagemaker-userprofile-usersettings-tensorboardappsettings)" : TensorBoardAppSettings
+  "[SharingSettings](#cfn-sagemaker-userprofile-usersettings-sharingsettings)" : SharingSettings
 }
 ```
 
@@ -29,12 +29,12 @@ To declare this entity in your AWS CloudFormation template, use the following sy
     JupyterServerAppSettings
   [KernelGatewayAppSettings](#cfn-sagemaker-userprofile-usersettings-kernelgatewayappsettings): 
     KernelGatewayAppSettings
+  [RStudioServerProAppSettings](#cfn-sagemaker-userprofile-usersettings-rstudioserverproappsettings): 
+    RStudioServerProAppSettings
   [SecurityGroups](#cfn-sagemaker-userprofile-usersettings-securitygroups): 
     - String
   [SharingSettings](#cfn-sagemaker-userprofile-usersettings-sharingsettings): 
     SharingSettings
-  [TensorBoardAppSettings](#cfn-sagemaker-userprofile-usersettings-tensorboardappsettings): 
-    TensorBoardAppSettings
 ```
 
 ## Properties<a name="aws-properties-sagemaker-userprofile-usersettings-properties"></a>
@@ -60,6 +60,12 @@ The kernel gateway app settings\.
 *Type*: [KernelGatewayAppSettings](aws-properties-sagemaker-userprofile-kernelgatewayappsettings.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
+`RStudioServerProAppSettings`  <a name="cfn-sagemaker-userprofile-usersettings-rstudioserverproappsettings"></a>
+A collection of settings that configure user interaction with the `RStudioServerPro` app\.  
+*Required*: No  
+*Type*: [RStudioServerProAppSettings](aws-properties-sagemaker-userprofile-rstudioserverproappsettings.md)  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
 `SecurityGroups`  <a name="cfn-sagemaker-userprofile-usersettings-securitygroups"></a>
 The security groups for the Amazon Virtual Private Cloud \(VPC\) that Studio uses for communication\.  
 Optional when the `CreateDomain.AppNetworkAccessType` parameter is set to `PublicInternetOnly`\.  
@@ -74,10 +80,4 @@ Amazon SageMaker adds a security group to allow NFS traffic from SageMaker Studi
 Specifies options for sharing SageMaker Studio notebooks\.  
 *Required*: No  
 *Type*: [SharingSettings](aws-properties-sagemaker-userprofile-sharingsettings.md)  
-*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
-
-`TensorBoardAppSettings`  <a name="cfn-sagemaker-userprofile-usersettings-tensorboardappsettings"></a>
-The TensorBoard app settings\.  
-*Required*: No  
-*Type*: [TensorBoardAppSettings](aws-properties-sagemaker-userprofile-tensorboardappsettings.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)

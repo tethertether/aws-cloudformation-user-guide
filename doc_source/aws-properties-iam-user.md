@@ -2,7 +2,7 @@
 
 Creates a new IAM user for your AWS account\.
 
- For information about quotas for the number of IAM users you can create, see [IAM and STS quotas](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html) in the *IAM User Guide*\.
+ For information about quotas for the number of IAM users you can create, see [IAM and AWS STS quotas](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html) in the *IAM User Guide*\.
 
 ## Syntax<a name="aws-properties-iam-user-syntax"></a>
 
@@ -49,7 +49,7 @@ Properties:
 ## Properties<a name="aws-properties-iam-user-properties"></a>
 
 `Groups`  <a name="cfn-iam-user-groups"></a>
-A list of groups to which you want to add the user\.  
+A list of group names to which you want to add the user\.  
 *Required*: No  
 *Type*: List of String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
@@ -81,7 +81,9 @@ This parameter allows \(through its [regex pattern](http://wikipedia.org/wiki/re
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `PermissionsBoundary`  <a name="cfn-iam-user-permissionsboundary"></a>
-The ARN of the policy that is used to set the permissions boundary for the user\.  
+The ARN of the managed policy that is used to set the permissions boundary for the user\.  
+A permissions boundary policy defines the maximum permissions that identity\-based policies can grant to an entity, but does not grant permissions\. Permissions boundaries do not define the maximum permissions that a resource\-based policy can grant to an entity\. To learn more, see [Permissions boundaries for IAM entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html) in the *IAM User Guide*\.  
+For more information about policy types, see [Policy types ](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policy-types) in the *IAM User Guide*\.  
 *Required*: No  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
@@ -91,7 +93,7 @@ Adds or updates an inline policy document that is embedded in the specified IAM 
 The name of each policy for a role, user, or group must be unique\. If you don't choose unique names, updates to the IAM identity will fail\. 
 For information about limits on the number of inline policies that you can embed in a user, see [Limitations on IAM Entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html) in the *IAM User Guide*\.  
 *Required*: No  
-*Type*: List of [Policy](aws-properties-iam-policy-1.md)  
+*Type*: List of [Policy](aws-properties-iam-policy.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Tags`  <a name="cfn-iam-user-tags"></a>

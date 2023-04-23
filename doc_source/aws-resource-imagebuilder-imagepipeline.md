@@ -17,6 +17,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
       "[DistributionConfigurationArn](#cfn-imagebuilder-imagepipeline-distributionconfigurationarn)" : String,
       "[EnhancedImageMetadataEnabled](#cfn-imagebuilder-imagepipeline-enhancedimagemetadataenabled)" : Boolean,
       "[ImageRecipeArn](#cfn-imagebuilder-imagepipeline-imagerecipearn)" : String,
+      "[ImageScanningConfiguration](#cfn-imagebuilder-imagepipeline-imagescanningconfiguration)" : ImageScanningConfiguration,
       "[ImageTestsConfiguration](#cfn-imagebuilder-imagepipeline-imagetestsconfiguration)" : ImageTestsConfiguration,
       "[InfrastructureConfigurationArn](#cfn-imagebuilder-imagepipeline-infrastructureconfigurationarn)" : String,
       "[Name](#cfn-imagebuilder-imagepipeline-name)" : String,
@@ -37,6 +38,8 @@ Properties:
   [DistributionConfigurationArn](#cfn-imagebuilder-imagepipeline-distributionconfigurationarn): String
   [EnhancedImageMetadataEnabled](#cfn-imagebuilder-imagepipeline-enhancedimagemetadataenabled): Boolean
   [ImageRecipeArn](#cfn-imagebuilder-imagepipeline-imagerecipearn): String
+  [ImageScanningConfiguration](#cfn-imagebuilder-imagepipeline-imagescanningconfiguration): 
+    ImageScanningConfiguration
   [ImageTestsConfiguration](#cfn-imagebuilder-imagepipeline-imagetestsconfiguration): 
     ImageTestsConfiguration
   [InfrastructureConfigurationArn](#cfn-imagebuilder-imagepipeline-infrastructureconfigurationarn): String
@@ -82,6 +85,12 @@ The Amazon Resource Name \(ARN\) of the image recipe associated with this image 
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
+`ImageScanningConfiguration`  <a name="cfn-imagebuilder-imagepipeline-imagescanningconfiguration"></a>
+Property description not available\.  
+*Required*: No  
+*Type*: [ImageScanningConfiguration](aws-properties-imagebuilder-imagepipeline-imagescanningconfiguration.md)  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
 `ImageTestsConfiguration`  <a name="cfn-imagebuilder-imagepipeline-imagetestsconfiguration"></a>
 The configuration of the image tests that run after image creation to ensure the quality of the image that was created\.  
 *Required*: No  
@@ -102,7 +111,7 @@ The name of the image pipeline\.
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `Schedule`  <a name="cfn-imagebuilder-imagepipeline-schedule"></a>
-The schedule of the image pipeline\. A schedule configures how often and when a pipeline will automatically create a new image\.  
+The schedule of the image pipeline\. A schedule configures how often and when a pipeline automatically creates a new image\.  
 *Required*: No  
 *Type*: [Schedule](aws-properties-imagebuilder-imagepipeline-schedule.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
@@ -140,7 +149,7 @@ For more information about using the `Fn::GetAtt` intrinsic function, see [Fn::G
 Returns the Amazon Resource Name \(ARN\) of the image pipeline\. For example, `arn:aws:imagebuilder:us-west-2:123456789012:image-pipeline/mywindows2016pipeline`\.
 
 `Name`  <a name="Name-fn::getatt"></a>
-Not currently supported by AWS CloudFormation\.
+Returns the name of the image pipeline\.
 
 ## Examples<a name="aws-resource-imagebuilder-imagepipeline--examples"></a>
 

@@ -2,7 +2,7 @@
 
 Contains the dimension configuration to use when you publish email sending events to Amazon CloudWatch\.
 
-For information about publishing email sending events to Amazon CloudWatch, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html)\.
+For information about publishing email sending events to Amazon CloudWatch, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html)\.
 
 ## Syntax<a name="aws-properties-ses-configurationseteventdestination-dimensionconfiguration-syntax"></a>
 
@@ -30,7 +30,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 `DefaultDimensionValue`  <a name="cfn-ses-configurationseteventdestination-dimensionconfiguration-defaultdimensionvalue"></a>
 The default value of the dimension that is published to Amazon CloudWatch if you do not provide the value of the dimension when you send an email\. The default value must meet the following requirements:  
-+ Contain only ASCII letters \(a\-z, A\-Z\), numbers \(0\-9\), underscores \(\_\), or dashes \(\-\)\.
++ Contain only ASCII letters \(a\-z, A\-Z\), numbers \(0\-9\), underscores \(\_\), dashes \(\-\), at signs \(@\), or periods \(\.\)\.
 + Contain 256 characters or fewer\.
 *Required*: Yes  
 *Type*: String  
@@ -38,7 +38,7 @@ The default value of the dimension that is published to Amazon CloudWatch if you
 
 `DimensionName`  <a name="cfn-ses-configurationseteventdestination-dimensionconfiguration-dimensionname"></a>
 The name of an Amazon CloudWatch dimension associated with an email sending metric\. The name must meet the following requirements:  
-+ Contain only ASCII letters \(a\-z, A\-Z\), numbers \(0\-9\), underscores \(\_\), or dashes \(\-\)\.
++ Contain only ASCII letters \(a\-z, A\-Z\), numbers \(0\-9\), underscores \(\_\), dashes \(\-\), or colons \(:\)\.
 + Contain 256 characters or fewer\.
 *Required*: Yes  
 *Type*: String  

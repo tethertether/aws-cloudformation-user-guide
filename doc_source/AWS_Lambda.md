@@ -1,4 +1,4 @@
-# Lambda resource type reference<a name="AWS_Lambda"></a>
+# AWS Lambda resource type reference<a name="AWS_Lambda"></a>
 
 **Resource types**
 + [AWS::Lambda::Alias](aws-resource-lambda-alias.md)
@@ -9,4 +9,5 @@
 + [AWS::Lambda::LayerVersion](aws-resource-lambda-layerversion.md)
 + [AWS::Lambda::LayerVersionPermission](aws-resource-lambda-layerversionpermission.md)
 + [AWS::Lambda::Permission](aws-resource-lambda-permission.md)
++ [AWS::Lambda::Url](aws-resource-lambda-url.md)
 + [AWS::Lambda::Version](aws-resource-lambda-version.md)

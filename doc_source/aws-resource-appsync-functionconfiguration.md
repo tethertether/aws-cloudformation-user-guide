@@ -3,7 +3,7 @@
 The `AWS::AppSync::FunctionConfiguration` resource defines the functions in GraphQL APIs to perform certain operations\. You can use pipeline resolvers to attach functions\. For more information, see [Pipeline Resolvers](https://docs.aws.amazon.com/appsync/latest/devguide/pipeline-resolvers.html) in the *AWS AppSync Developer Guide*\. 
 
 **Note**  
-When you submit an update, AWS CloudFormation updates resources based on differences between what you submit and the stack's current template\. To cause this resource to be updated you must change a property value for this resource in the CloudFormation template\. Changing the S3 file content without changing a property value will not result in an update operation\.  
+When you submit an update, AWS CloudFormation updates resources based on differences between what you submit and the stack's current template\. To cause this resource to be updated you must change a property value for this resource in the AWS CloudFormation template\. Changing the Amazon S3 file content without changing a property value will not result in an update operation\.  
 See [Update Behaviors of Stack Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html) in the *AWS CloudFormation User Guide*\.
 
 ## Syntax<a name="aws-resource-appsync-functionconfiguration-syntax"></a>
@@ -17,14 +17,18 @@ To declare this entity in your AWS CloudFormation template, use the following sy
   "Type" : "AWS::AppSync::FunctionConfiguration",
   "Properties" : {
       "[ApiId](#cfn-appsync-functionconfiguration-apiid)" : String,
+      "[Code](#cfn-appsync-functionconfiguration-code)" : String,
+      "[CodeS3Location](#cfn-appsync-functionconfiguration-codes3location)" : String,
       "[DataSourceName](#cfn-appsync-functionconfiguration-datasourcename)" : String,
       "[Description](#cfn-appsync-functionconfiguration-description)" : String,
       "[FunctionVersion](#cfn-appsync-functionconfiguration-functionversion)" : String,
+      "[MaxBatchSize](#cfn-appsync-functionconfiguration-maxbatchsize)" : Integer,
       "[Name](#cfn-appsync-functionconfiguration-name)" : String,
       "[RequestMappingTemplate](#cfn-appsync-functionconfiguration-requestmappingtemplate)" : String,
       "[RequestMappingTemplateS3Location](#cfn-appsync-functionconfiguration-requestmappingtemplates3location)" : String,
       "[ResponseMappingTemplate](#cfn-appsync-functionconfiguration-responsemappingtemplate)" : String,
       "[ResponseMappingTemplateS3Location](#cfn-appsync-functionconfiguration-responsemappingtemplates3location)" : String,
+      "[Runtime](#cfn-appsync-functionconfiguration-runtime)" : AppSyncRuntime,
       "[SyncConfig](#cfn-appsync-functionconfiguration-syncconfig)" : SyncConfig
     }
 }
@@ -36,14 +40,19 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 Type: AWS::AppSync::FunctionConfiguration
 Properties: 
   [ApiId](#cfn-appsync-functionconfiguration-apiid): String
+  [Code](#cfn-appsync-functionconfiguration-code): String
+  [CodeS3Location](#cfn-appsync-functionconfiguration-codes3location): String
   [DataSourceName](#cfn-appsync-functionconfiguration-datasourcename): String
   [Description](#cfn-appsync-functionconfiguration-description): String
   [FunctionVersion](#cfn-appsync-functionconfiguration-functionversion): String
+  [MaxBatchSize](#cfn-appsync-functionconfiguration-maxbatchsize): Integer
   [Name](#cfn-appsync-functionconfiguration-name): String
   [RequestMappingTemplate](#cfn-appsync-functionconfiguration-requestmappingtemplate): String
   [RequestMappingTemplateS3Location](#cfn-appsync-functionconfiguration-requestmappingtemplates3location): String
   [ResponseMappingTemplate](#cfn-appsync-functionconfiguration-responsemappingtemplate): String
   [ResponseMappingTemplateS3Location](#cfn-appsync-functionconfiguration-responsemappingtemplates3location): String
+  [Runtime](#cfn-appsync-functionconfiguration-runtime): 
+    AppSyncRuntime
   [SyncConfig](#cfn-appsync-functionconfiguration-syncconfig): 
     SyncConfig
 ```
@@ -55,6 +64,18 @@ The AWS AppSync GraphQL API that you want to attach using this function\.
 *Required*: Yes  
 *Type*: String  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
+
+`Code`  <a name="cfn-appsync-functionconfiguration-code"></a>
+The `resolver` code that contains the request and response functions\. When code is used, the `runtime` is required\. The runtime value must be `APPSYNC_JS`\.  
+*Required*: No  
+*Type*: String  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
+`CodeS3Location`  <a name="cfn-appsync-functionconfiguration-codes3location"></a>
+ The Amazon S3 endpoint\.   
+*Required*: No  
+*Type*: String  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `DataSourceName`  <a name="cfn-appsync-functionconfiguration-datasourcename"></a>
 The name of data source this function will attach\.  
@@ -69,9 +90,15 @@ The `Function` description\.
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `FunctionVersion`  <a name="cfn-appsync-functionconfiguration-functionversion"></a>
-The version of the request mapping template\. Currently only the 2018\-05\-29 version of the template is supported\.  
-*Required*: Yes  
+The version of the request mapping template\. Currently, only the 2018\-05\-29 version of the template is supported\.  
+*Required*: No  
 *Type*: String  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
+`MaxBatchSize`  <a name="cfn-appsync-functionconfiguration-maxbatchsize"></a>
+The maximum number of resolver request inputs that will be sent to a single AWS Lambda function in a `BatchInvoke` operation\.  
+*Required*: No  
+*Type*: Integer  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Name`  <a name="cfn-appsync-functionconfiguration-name"></a>
@@ -105,9 +132,15 @@ The location of a response mapping template in an Amazon S3 bucket\. Use this if
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
+`Runtime`  <a name="cfn-appsync-functionconfiguration-runtime"></a>
+Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function\. Specifies the name and version of the runtime to use\. Note that if a runtime is specified, code must also be specified\.  
+*Required*: No  
+*Type*: [AppSyncRuntime](aws-properties-appsync-functionconfiguration-appsyncruntime.md)  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
 `SyncConfig`  <a name="cfn-appsync-functionconfiguration-syncconfig"></a>
 Describes a Sync configuration for a resolver\.  
-Contains information on which Conflict Detection as well as Resolution strategy should be performed when the resolver is invoked\.  
+Specifies which Conflict Detection strategy and Resolution strategy to use when the resolver is invoked\.  
 *Required*: No  
 *Type*: [SyncConfig](aws-properties-appsync-functionconfiguration-syncconfig.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)

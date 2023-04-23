@@ -1,6 +1,6 @@
 # AWS::ACMPCA::Certificate GeneralName<a name="aws-properties-acmpca-certificate-generalname"></a>
 
-Describes an ASN\.1 X\.400 `GeneralName` as defined in [RFC 5280](https://tools.ietf.org/html/rfc5280)\. Only one of the following naming options should be provided\. Providing more than one option results in an `InvalidArgsException` error\.
+Describes an ASN\.1 X\.400 `GeneralName` as defined in [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280)\. Only one of the following naming options should be provided\. Providing more than one option results in an `InvalidArgsException` error\.
 
 ## Syntax<a name="aws-properties-acmpca-certificate-generalname-syntax"></a>
 
@@ -40,7 +40,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ## Properties<a name="aws-properties-acmpca-certificate-generalname-properties"></a>
 
 `DirectoryName`  <a name="cfn-acmpca-certificate-generalname-directoryname"></a>
-Contains information about the certificate subject\. The certificate can be one issued by your private certificate authority \(CA\) or it can be your private CA certificate\. The Subject field in the certificate identifies the entity that owns or controls the public key in the certificate\. The entity can be a user, computer, device, or service\. The Subject must contain an X\.500 distinguished name \(DN\)\. A DN is a sequence of relative distinguished names \(RDNs\)\. The RDNs are separated by commas in the certificate\. The DN must be unique for each entity, but your private CA can issue more than one certificate with the same DN to the same entity\.   
+Contains information about the certificate subject\. The certificate can be one issued by your private certificate authority \(CA\) or it can be your private CA certificate\. The Subject field in the certificate identifies the entity that owns or controls the public key in the certificate\. The entity can be a user, computer, device, or service\. The Subject must contain an X\.500 distinguished name \(DN\)\. A DN is a sequence of relative distinguished names \(RDNs\)\. The RDNs are separated by commas in the certificate\. The DN must be unique for each entity, but your private CA can issue more than one certificate with the same DN to the same entity\.  
 *Required*: No  
 *Type*: [Subject](aws-properties-acmpca-certificate-subject.md)  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
@@ -83,7 +83,7 @@ Represents `GeneralName` using an `OtherName` object\.
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `Rfc822Name`  <a name="cfn-acmpca-certificate-generalname-rfc822name"></a>
-Represents `GeneralName` as an [RFC 822](https://tools.ietf.org/html/rfc822) email address\.  
+Represents `GeneralName` as an [RFC 822](https://datatracker.ietf.org/doc/html/rfc822) email address\.  
 *Required*: No  
 *Type*: String  
 *Minimum*: `0`  

@@ -14,7 +14,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 {
   "Type" : "AWS::EC2::TransitGatewayMulticastDomain",
   "Properties" : {
-      "[Options](#cfn-ec2-transitgatewaymulticastdomain-options)" : Json,
+      "[Options](#cfn-ec2-transitgatewaymulticastdomain-options)" : Options,
       "[Tags](#cfn-ec2-transitgatewaymulticastdomain-tags)" : [ [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html), ... ],
       "[TransitGatewayId](#cfn-ec2-transitgatewaymulticastdomain-transitgatewayid)" : String
     }
@@ -26,7 +26,8 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ```
 Type: AWS::EC2::TransitGatewayMulticastDomain
 Properties: 
-  [Options](#cfn-ec2-transitgatewaymulticastdomain-options): Json
+  [Options](#cfn-ec2-transitgatewaymulticastdomain-options): 
+    Options
   [Tags](#cfn-ec2-transitgatewaymulticastdomain-tags): 
     - [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)
   [TransitGatewayId](#cfn-ec2-transitgatewaymulticastdomain-transitgatewayid): String
@@ -36,8 +37,11 @@ Properties:
 
 `Options`  <a name="cfn-ec2-transitgatewaymulticastdomain-options"></a>
 The options for the transit gateway multicast domain\.  
++ AutoAcceptSharedAssociations \(enable \| disable\)
++ Igmpv2Support \(enable \| disable\)
++ StaticSourcesSupport \(enable \| disable\)
 *Required*: No  
-*Type*: Json  
+*Type*: [Options](aws-properties-ec2-transitgatewaymulticastdomain-options.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Tags`  <a name="cfn-ec2-transitgatewaymulticastdomain-tags"></a>
@@ -73,7 +77,7 @@ The time the multicast domain was created\.
 The state of the multicast domain\.
 
 `TransitGatewayMulticastDomainArn`  <a name="TransitGatewayMulticastDomainArn-fn::getatt"></a>
-Not currently supported by AWS CloudFormation\.
+The Amazon Resource Name \(ARN\) of the multicast domain\.
 
 `TransitGatewayMulticastDomainId`  <a name="TransitGatewayMulticastDomainId-fn::getatt"></a>
 The ID of the multicast domain\.

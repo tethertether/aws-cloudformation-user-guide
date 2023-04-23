@@ -1,9 +1,10 @@
 # AWS::DynamoDB::GlobalTable<a name="aws-resource-dynamodb-globaltable"></a>
 
-The `AWS::DynamoDB::GlobalTable` resource enables you to create and manage a Version 2019\.11\.21 global table\. This resource cannot be used to create or manage a Version 2017\.11\.29 global table\.
+The `AWS::DynamoDB::GlobalTable` resource enables you to create and manage a Version 2019\.11\.21 global table\. This resource cannot be used to create or manage a Version 2017\.11\.29 global table\. For more information, see [Global tables](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GlobalTables.html)\.
 
 **Important**  
-You cannot convert a resource of type `AWS::DynamoDB::Table` into a resource of type `AWS::DynamoDB::GlobalTable` by changing its type in your template\. **Doing so might result in the deletion of your DynamoDB table\.**
+You cannot convert a resource of type `AWS::DynamoDB::Table` into a resource of type `AWS::DynamoDB::GlobalTable` by changing its type in your template\. **Doing so might result in the deletion of your DynamoDB table\.**  
+You can instead use the GlobalTable resource to create a new table in a single Region\. This will be billed the same as a single Region table\. If you later update the stack to add other Regions then Global Tables pricing will apply\.
 
 You should be aware of the following behaviors when working with DynamoDB global tables\.
 + The IAM Principal executing the stack operation must have the permissions listed below in all regions where you plan to have a global table replica\. The IAM Principal's permissions should not have restrictions based on IP source address\. Some global tables operations \(for example, adding a replica\) are asynchronous, and require that the IAM Principal is valid until they complete\. You should not delete the Principal \(user or IAM role\) until CloudFormation has finished updating your stack\.
@@ -20,6 +21,7 @@ You should be aware of the following behaviors when working with DynamoDB global
   + `dynamodb:UpdateContributorInsights`
   + `dynamodb:UpdateContinuousBackups`
   + `dynamodb:ListTagsOfResource`
+  + `dynamodb:TableClass`
   + `dynamodb:TagResource`
   + `dynamodb:UntagResource`
   + `dynamodb:BatchWriteItem`
@@ -143,7 +145,7 @@ Local secondary indexes to be created on the table\. You can create up to five l
 Specifies the list of replicas for your global table\. The list must contain at least one element, the region where the stack defining the global table is deployed\. For example, if you define your table in a stack deployed to us\-east\-1, you must have an entry in `Replicas` with the region us\-east\-1\. You cannot remove the replica in the stack region\.  
 Adding a replica might take a few minutes for an empty table, or up to several hours for large tables\. If you want to add or remove a replica, we recommend submitting an `UpdateStack` operation containing only that change\.  
 If you add or delete a replica during an update, we recommend that you don't update any other resources\. If your stack fails to update and is rolled back while adding a new replica, you might need to manually delete the replica\.
-You can create a new global table with up to two replicas\. You can add or remove replicas after table creation, but you can only add or remove a single replica in each update\.  
+You can create a new global table with as many replicas as needed\. You can add or remove replicas after table creation, but you can only add or remove a single replica in each update\.  
 *Required*: Yes  
 *Type*: List of [ReplicaSpecification](aws-properties-dynamodb-globaltable-replicaspecification.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)

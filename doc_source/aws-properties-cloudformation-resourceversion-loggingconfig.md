@@ -25,13 +25,13 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ## Properties<a name="aws-properties-cloudformation-resourceversion-loggingconfig-properties"></a>
 
 `LogGroupName`  <a name="cfn-cloudformation-resourceversion-loggingconfig-loggroupname"></a>
-The Amazon CloudWatch log group to which CloudFormation sends error logging information when invoking the type's handlers\.  
+The Amazon CloudWatch logs group to which CloudFormation sends error logging information when invoking the type's handlers\.  
 *Required*: No  
 *Type*: String  
 *Minimum*: `1`  
 *Maximum*: `512`  
 *Pattern*: `[\.\-_/#A-Za-z0-9]+`  
-*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+*Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `LogRoleArn`  <a name="cfn-cloudformation-resourceversion-loggingconfig-logrolearn"></a>
 The ARN of the role that CloudFormation should assume when sending log entries to CloudWatch logs\.  
@@ -40,4 +40,4 @@ The ARN of the role that CloudFormation should assume when sending log entries t
 *Minimum*: `1`  
 *Maximum*: `256`  
 *Pattern*: `arn:.+:iam::[0-9]{12}:role/.+`  
-*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+*Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)

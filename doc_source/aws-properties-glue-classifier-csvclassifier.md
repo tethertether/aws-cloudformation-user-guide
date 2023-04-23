@@ -43,6 +43,9 @@ Enables the processing of files that contain only one column\.
 
 `ContainsHeader`  <a name="cfn-glue-classifier-csvclassifier-containsheader"></a>
 Indicates whether the CSV file contains a header\.  
+A value of `UNKNOWN` specifies that the classifier will detect whether the CSV file contains headings\.  
+A value of `PRESENT` specifies that the CSV file contains headings\.  
+A value of `ABSENT` specifies that the CSV file does not contain headings\.  
 *Required*: No  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
@@ -89,7 +92,7 @@ With `AWS::Glue::Classifier` you can create a custom classifier test\.
 
 ```
 {
-    "Description": "AWS Glue Custom Classifier Test",
+    "Description": "AWS Glue custom classifier test",
     "Resources": {
         "MyCSVclassifier": {
             "Type": "AWS::Glue::Classifier",
@@ -114,7 +117,7 @@ With `AWS::Glue::Classifier` you can create a custom classifier test\.
 #### YAML<a name="aws-properties-glue-classifier-csvclassifier--examples--Create_a_custom_classifier_test--yaml"></a>
 
 ```
-Description: AWS Glue Custom Classifier Test
+Description: AWS Glue custom classifier test
 Resources:
   MyCSVclassifier:
     Type: 'AWS::Glue::Classifier'

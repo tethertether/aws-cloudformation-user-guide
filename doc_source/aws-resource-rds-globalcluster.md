@@ -44,7 +44,7 @@ Properties:
 ## Properties<a name="aws-resource-rds-globalcluster-properties"></a>
 
 `DeletionProtection`  <a name="cfn-rds-globalcluster-deletionprotection"></a>
- The deletion protection setting for the new global database\. The global database can't be deleted when deletion protection is enabled\.   
+The deletion protection setting for the new global database\. The global database can't be deleted when deletion protection is enabled\.  
 *Required*: No  
 *Type*: Boolean  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
@@ -149,7 +149,7 @@ The following example creates a global database cluster with an Aurora MySQL DB 
                 },
                 "DBClusterParameterGroupName": "default.aurora-mysql5.7",
                 "Engine": "aurora-mysql",
-                "EngineVersion": "5.7.mysql_aurora.2.08.0"
+                "EngineVersion": "5.7.mysql_aurora.2.10.0"
             }
         },
         "RDSDBInstance": {
@@ -206,7 +206,7 @@ Resources:
       MasterUserPassword: !Ref password
       DBClusterParameterGroupName: default.aurora-mysql5.7
       Engine: aurora-mysql
-      EngineVersion: 5.7.mysql_aurora.2.08.0
+      EngineVersion: 5.7.mysql_aurora.2.10.0
   RDSDBInstance:
     Type: 'AWS::RDS::DBInstance'
     Properties:
@@ -342,13 +342,13 @@ Resources:
       DBInstanceClass: db.r5.xlarge
 ```
 
-### Adding an AWS Region to an Aurora database cluster<a name="aws-resource-rds-globalcluster--examples--Adding_an_AWS_Region_to_an_Aurora_database_cluster"></a>
+### Adding a Region to an Aurora database cluster<a name="aws-resource-rds-globalcluster--examples--Adding_a_Region_to_an_Aurora_database_cluster"></a>
 
 The following example creates a new Aurora DB cluster, attaches it to a global database cluster as a read\-only secondary cluster, and then adds a DB instance to the new DB cluster\.
 
 Specify the `GlobalClusterIdentifier` of a global database cluster with the primary DB cluster in a separate AWS Region\.
 
-#### JSON<a name="aws-resource-rds-globalcluster--examples--Adding_an_AWS_Region_to_an_Aurora_database_cluster--json"></a>
+#### JSON<a name="aws-resource-rds-globalcluster--examples--Adding_a_Region_to_an_Aurora_database_cluster--json"></a>
 
 ```
 {
@@ -369,7 +369,7 @@ Specify the `GlobalClusterIdentifier` of a global database cluster with the prim
                 },
                 "DBClusterParameterGroupName": "default.aurora-mysql5.7",
                 "Engine": "aurora-mysql",
-                "EngineVersion": "5.7.mysql_aurora.2.08.0"
+                "EngineVersion": "5.7.mysql_aurora.2.10.0"
             }
         },
         "RDSDBInstance": {
@@ -388,7 +388,7 @@ Specify the `GlobalClusterIdentifier` of a global database cluster with the prim
 }
 ```
 
-#### YAML<a name="aws-resource-rds-globalcluster--examples--Adding_an_AWS_Region_to_an_Aurora_database_cluster--yaml"></a>
+#### YAML<a name="aws-resource-rds-globalcluster--examples--Adding_a_Region_to_an_Aurora_database_cluster--yaml"></a>
 
 ```
 AWSTemplateFormatVersion: 2010-09-09
@@ -404,7 +404,7 @@ Resources:
       GlobalClusterIdentifier: !Ref GlobalClusterIdentifier
       DBClusterParameterGroupName: default.aurora-mysql5.7
       Engine: aurora-mysql
-      EngineVersion: 5.7.mysql_aurora.2.08.0
+      EngineVersion: 5.7.mysql_aurora.2.10.0
   RDSDBInstance:
     Type: 'AWS::RDS::DBInstance'
     Properties:
@@ -459,7 +459,7 @@ The following template was used to create DB cluster that you want to add to the
                 },
                 "DBClusterParameterGroupName": "default.aurora-mysql5.7",
                 "Engine": "aurora-mysql",
-                "EngineVersion": "5.7.mysql_aurora.2.08.0"
+                "EngineVersion": "5.7.mysql_aurora.2.10.0"
             }
         },
         "RDSDBInstance": {
@@ -527,7 +527,7 @@ The following template adds the DB cluster created by the previous template to a
                 },
                 "DBClusterParameterGroupName": "default.aurora-mysql5.7",
                 "Engine": "aurora-mysql",
-                "EngineVersion": "5.7.mysql_aurora.2.08.0"
+                "EngineVersion": "5.7.mysql_aurora.2.10.0"
             }
         },
         "RDSDBInstance": {
@@ -576,7 +576,7 @@ Resources:
       MasterUserPassword: !Ref password
       DBClusterParameterGroupName: default.aurora-mysql5.7
       Engine: aurora-mysql
-      EngineVersion: 5.7.mysql_aurora.2.08.0
+      EngineVersion: 5.7.mysql_aurora.2.10.0
   RDSDBInstance:
     Type: 'AWS::RDS::DBInstance'
     Properties:
@@ -621,7 +621,7 @@ Resources:
       MasterUserPassword: !Ref password
       DBClusterParameterGroupName: default.aurora-mysql5.7
       Engine: aurora-mysql
-      EngineVersion: 5.7.mysql_aurora.2.08.0
+      EngineVersion: 5.7.mysql_aurora.2.10.0
   RDSDBInstance:
     Type: 'AWS::RDS::DBInstance'
     Properties:

@@ -53,13 +53,13 @@ A flag that determines whether to automatically publish the function to the `LIV
 
 `FunctionCode`  <a name="cfn-cloudfront-function-functioncode"></a>
 The function code\. For more information about writing a CloudFront function, see [Writing function code for CloudFront Functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/writing-function-code.html) in the *Amazon CloudFront Developer Guide*\.  
-*Required*: No  
+*Required*: Yes  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `FunctionConfig`  <a name="cfn-cloudfront-function-functionconfig"></a>
 Contains configuration information about a CloudFront function\.  
-*Required*: No  
+*Required*: Yes  
 *Type*: [FunctionConfig](aws-properties-cloudfront-function-functionconfig.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
@@ -89,3 +89,6 @@ The ARN of the function\. For example:
 `arn:aws:cloudfront::123456789012:function/ExampleFunction`\.  
 To get the function ARN, use the following syntax:  
 `!GetAtt Function_Logical_ID.FunctionMetadata.FunctionARN`
+
+`FunctionMetadata.FunctionARN`  <a name="FunctionMetadata.FunctionARN-fn::getatt"></a>
+The Amazon Resource Name \(ARN\) of the function\. The ARN uniquely identifies the function\.

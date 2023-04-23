@@ -1,6 +1,6 @@
 # AWS::Lambda::LayerVersion<a name="aws-resource-lambda-layerversion"></a>
 
-The `AWS::Lambda::LayerVersion` resource creates an [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) from a ZIP archive\.
+The `AWS::Lambda::LayerVersion` resource creates a [Lambda layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) from a ZIP archive\.
 
 ## Syntax<a name="aws-resource-lambda-layerversion-syntax"></a>
 
@@ -41,9 +41,10 @@ Properties:
 ## Properties<a name="aws-resource-lambda-layerversion-properties"></a>
 
 `CompatibleArchitectures`  <a name="cfn-lambda-layerversion-compatiblearchitectures"></a>
-Not currently supported by AWS CloudFormation\.  
+A list of compatible [instruction set architectures](https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html)\.  
 *Required*: No  
 *Type*: List of String  
+*Maximum*: `2`  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `CompatibleRuntimes`  <a name="cfn-lambda-layerversion-compatibleruntimes"></a>

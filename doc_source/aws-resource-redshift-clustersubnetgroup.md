@@ -2,7 +2,7 @@
 
 Specifies an Amazon Redshift subnet group\. You must provide a list of one or more subnets in your existing Amazon Virtual Private Cloud \(Amazon VPC\) when creating Amazon Redshift subnet group\.
 
- For information about subnet groups, go to [Amazon Redshift Cluster Subnet Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html) in the *Amazon Redshift Cluster Management Guide*\.
+For information about subnet groups, go to [Amazon Redshift Cluster Subnet Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-cluster-subnet-groups.html) in the *Amazon Redshift Cluster Management Guide*\.
 
 ## Syntax<a name="aws-resource-redshift-clustersubnetgroup-syntax"></a>
 
@@ -65,6 +65,17 @@ Specifies an arbitrary set of tags \(key–value pairs\) to associate with this 
 For the Amazon Redshift subnet group `myClusterSubnetGroup`, Ref returns the name of the cluster subnet group\.
 
 For more information about using the `Ref` function, see [Ref](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html)\.
+
+### Fn::GetAtt<a name="aws-resource-redshift-clustersubnetgroup-return-values-fn--getatt"></a>
+
+The `Fn::GetAtt` intrinsic function returns a value for a specified attribute of this type\. The following are the available attributes and sample return values\.
+
+For more information about using the `Fn::GetAtt` intrinsic function, see [Fn::GetAtt](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html)\.
+
+#### <a name="aws-resource-redshift-clustersubnetgroup-return-values-fn--getatt-fn--getatt"></a>
+
+`ClusterSubnetGroupName`  <a name="ClusterSubnetGroupName-fn::getatt"></a>
+The name of the cluster subnet group\.
 
 ## Examples<a name="aws-resource-redshift-clustersubnetgroup--examples"></a>
 

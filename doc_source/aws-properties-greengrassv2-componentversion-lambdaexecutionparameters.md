@@ -90,7 +90,7 @@ The maximum number of instances that a non\-pinned Lambda function can run at th
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `MaxQueueSize`  <a name="cfn-greengrassv2-componentversion-lambdaexecutionparameters-maxqueuesize"></a>
-The maximum size of the message queue for the Lambda function component\. The Greengrass core device stores messages in a FIFO \(first\-in\-first\-out\) queue until it can run the Lambda function to consume each message\.  
+The maximum size of the message queue for the Lambda function component\. The AWS IoT Greengrass core device stores messages in a FIFO \(first\-in\-first\-out\) queue until it can run the Lambda function to consume each message\.  
 *Required*: No  
 *Type*: Integer  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)

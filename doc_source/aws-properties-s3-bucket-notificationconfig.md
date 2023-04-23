@@ -16,6 +16,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 ```
 {
+  "[EventBridgeConfiguration](#cfn-s3-bucket-notificationconfig-eventbridgeconfig)" : EventBridgeConfiguration,
   "[LambdaConfigurations](#cfn-s3-bucket-notificationconfig-lambdaconfig)" : [ LambdaConfiguration, ... ],
   "[QueueConfigurations](#cfn-s3-bucket-notificationconfig-queueconfig)" : [ QueueConfiguration, ... ],
   "[TopicConfigurations](#cfn-s3-bucket-notificationconfig-topicconfig)" : [ TopicConfiguration, ... ]
@@ -25,6 +26,8 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ### YAML<a name="aws-properties-s3-bucket-notificationconfig-syntax.yaml"></a>
 
 ```
+  [EventBridgeConfiguration](#cfn-s3-bucket-notificationconfig-eventbridgeconfig): 
+    EventBridgeConfiguration
   [LambdaConfigurations](#cfn-s3-bucket-notificationconfig-lambdaconfig): 
     - LambdaConfiguration
   [QueueConfigurations](#cfn-s3-bucket-notificationconfig-queueconfig): 
@@ -34,6 +37,12 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ```
 
 ## Properties<a name="aws-properties-s3-bucket-notificationconfig-properties"></a>
+
+`EventBridgeConfiguration`  <a name="cfn-s3-bucket-notificationconfig-eventbridgeconfig"></a>
+Enables delivery of events to Amazon EventBridge\.  
+*Required*: No  
+*Type*: [EventBridgeConfiguration](aws-properties-s3-bucket-notificationconfig-eventbridgeconfig.md)  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `LambdaConfigurations`  <a name="cfn-s3-bucket-notificationconfig-lambdaconfig"></a>
 Describes the AWS Lambda functions to invoke and the events for which to invoke them\.  

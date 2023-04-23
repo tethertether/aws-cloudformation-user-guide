@@ -1,6 +1,6 @@
 # AWS::NimbleStudio::StreamingImage<a name="aws-resource-nimblestudio-streamingimage"></a>
 
-The `AWS::NimbleStudio::StreamingImage` resource creates a streaming image in a studio\. A streaming image defines the operating system and software to be used in a Nimble Studio streaming session\.
+The `AWS::NimbleStudio::StreamingImage` resource creates a streaming image in a studio\. A streaming image defines the operating system and software to be used in an Amazon Nimble Studio streaming session\.
 
 ## Syntax<a name="aws-resource-nimblestudio-streamingimage-syntax"></a>
 
@@ -37,7 +37,7 @@ Properties:
 ## Properties<a name="aws-resource-nimblestudio-streamingimage-properties"></a>
 
 `Description`  <a name="cfn-nimblestudio-streamingimage-description"></a>
- A human\-readable description of the streaming image\.  
+A human\-readable description of the streaming image\.  
 *Required*: No  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
@@ -55,7 +55,7 @@ A friendly name for a streaming image resource\.
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `StudioId`  <a name="cfn-nimblestudio-streamingimage-studioid"></a>
-The unique identifier for a studio resource\. In Nimble Studio, all other resources are contained in a studio resource\.   
+The unique identifier for a studio resource\. In Nimble Studio, all other resources are contained in a studio resource\.  
 *Required*: Yes  
 *Type*: String  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
@@ -72,6 +72,15 @@ For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/la
 ### Fn::GetAtt<a name="aws-resource-nimblestudio-streamingimage-return-values-fn--getatt"></a>
 
 #### <a name="aws-resource-nimblestudio-streamingimage-return-values-fn--getatt-fn--getatt"></a>
+
+`EncryptionConfiguration`  <a name="EncryptionConfiguration-fn::getatt"></a>
+Property description not available\.
+
+`EncryptionConfiguration.KeyArn`  <a name="EncryptionConfiguration.KeyArn-fn::getatt"></a>
+Property description not available\.
+
+`EncryptionConfiguration.KeyType`  <a name="EncryptionConfiguration.KeyType-fn::getatt"></a>
+Property description not available\.
 
 `EulaIds`  <a name="EulaIds-fn::getatt"></a>
 The list of IDs of EULAs that must be accepted before a streaming session can be started using this streaming image\.

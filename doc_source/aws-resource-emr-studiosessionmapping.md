@@ -1,6 +1,6 @@
 # AWS::EMR::StudioSessionMapping<a name="aws-resource-emr-studiosessionmapping"></a>
 
-The AWS::EMR::StudioSessionMapping resource is an Amazon EMR resource type that maps a user or group to the Amazon EMR Studio specified by `StudioId`, and applies a session policy that defines Studio permissions for that user or group\.
+The `AWS::EMR::StudioSessionMapping` resource is an Amazon EMR resource type that maps a user or group to the Amazon EMR Studio specified by `StudioId`, and applies a session policy that defines Studio permissions for that user or group\.
 
 ## Syntax<a name="aws-resource-emr-studiosessionmapping-syntax"></a>
 
@@ -34,7 +34,7 @@ Properties:
 ## Properties<a name="aws-resource-emr-studiosessionmapping-properties"></a>
 
 `IdentityName`  <a name="cfn-emr-studiosessionmapping-identityname"></a>
-The name of the user or group\. For more information, see [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName) and [DisplayName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName) in the *AWS SSO Identity Store API Reference*\.  
+The name of the user or group\. For more information, see [UserName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_User.html#singlesignon-Type-User-UserName) and [DisplayName](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/API_Group.html#singlesignon-Type-Group-DisplayName) in the *IAM Identity Center Identity Store API Reference*\.  
 *Required*: Yes  
 *Type*: String  
 *Minimum*: `0`  

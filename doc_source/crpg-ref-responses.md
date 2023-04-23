@@ -2,10 +2,10 @@
 
 ## Custom resource provider response fields<a name="crpg-ref-responses-fields"></a>
 
-The following are properties that the custom resource provider includes when it sends the JSON file to the presigned URL\. For more information about uploading objects by using presigned URLs, see the related [topic](https://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html) in the *Amazon Simple Storage Service Developer Guide*\.
+The following are properties that the custom resource provider includes when it sends the JSON file to the presigned URL\. For more information about uploading objects by using presigned URLs, see the related [topic](https://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html) in the *Amazon Simple Storage Service User Guide*\.
 
 **Note**  
-The total size of the response body cannot exceed 4096 bytes\.
+The total size of the response body can't exceed 4096 bytes\.
 
 Status  <a name="crpg-ref-responses-status"></a>
 The status value sent by the custom resource provider in response to an AWS CloudFormation\-generated request\.  
@@ -20,6 +20,7 @@ Describes the reason for a failure response\.
 
 PhysicalResourceId  <a name="crpg-ref-responses-physicalresourceid"></a>
 This value should be an identifier unique to the custom resource vendor, and can be up to 1 KB in size\. The value must be a non\-empty string and must be identical for all responses for the same resource\.  
+The value returned for a `PhysicalResourceId` can change custom resource update operations\. If the value returned is the same, it is considered a normal update\. If the value returned is different, AWS CloudFormation recognizes the update as a replacement and sends a delete request to the old resource\. For more information, see [AWS::CloudFormation::CustomResource](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cfn-customresource.html)\.  
 *Required*: Yes  
 *Type*: String
 

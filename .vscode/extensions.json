@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "ms-vscode.cpptools",
+        "eamodio.gitlens",
+        "vadimcn.vscode-lldb",
+        "ms-vscode.powershell"
+    ]
+}

@@ -2,7 +2,7 @@
 
 Specifies a new Amazon Redshift security group\. You use security groups to control access to non\-VPC clusters\.
 
- For information about managing security groups, go to [Amazon Redshift Cluster Security Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html) in the *Amazon Redshift Cluster Management Guide*\.
+For information about managing security groups, go to [Amazon Redshift Cluster Security Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html) in the *Amazon Redshift Cluster Management Guide*\.
 
 ## Syntax<a name="aws-resource-redshift-clustersecuritygroup-syntax"></a>
 
@@ -85,9 +85,9 @@ The following example describes an Amazon Redshift cluster security group that y
 #### YAML<a name="aws-resource-redshift-clustersecuritygroup--examples--Specify_a_Cluster_Security_Group--yaml"></a>
 
 ```
-myClusterSecurityGroup: 
+myClusterSecurityGroup:
   Type: "AWS::Redshift::ClusterSecurityGroup"
-  Properties: 
+  Properties:
     Description: "Security group to determine where connections to the Amazon Redshift cluster can come from"
     Tags:
       - Key: foo

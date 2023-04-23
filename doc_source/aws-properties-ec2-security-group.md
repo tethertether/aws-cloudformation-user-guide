@@ -5,7 +5,7 @@ Specifies a security group\. To create a security group, use the [VpcId](https:/
 This type supports updates\. For more information about updating stacks, see [AWS CloudFormation Stacks Updates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks.html)\.
 
 **Important**  
-If you want to cross\-reference two security groups in the ingress and egress rules of those security groups, use the [AWS::EC2::SecurityGroupEgress](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-security-group-egress.html) and [AWS::EC2::SecurityGroupIngress](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-security-group-ingress.html) resources to define your rules\. Do not use the embedded ingress and egress rules in the `AWS::EC2::SecurityGroup`\. Doing so creates a circular dependency, which CloudFormation doesn't allow\.
+To cross\-reference two security groups in the ingress and egress rules of those security groups, use the [AWS::EC2::SecurityGroupEgress](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-security-group-egress.html) and [AWS::EC2::SecurityGroupIngress](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-security-group-ingress.html) resources to define your rules\. Do not use the embedded ingress and egress rules in the `AWS::EC2::SecurityGroup`\. Doing so creates a circular dependency, which AWS CloudFormation doesn't allow\.
 
 ## Syntax<a name="aws-properties-ec2-security-group-syntax"></a>
 
@@ -67,13 +67,13 @@ Constraints for EC2\-VPC: a\-z, A\-Z, 0\-9, spaces, and \.\_\-:/\(\)\#,@\[\]\+=&
 \[VPC only\] The outbound rules associated with the security group\. There is a short interruption during which you cannot connect to the security group\.  
 *Required*: No  
 *Type*: List of [Egress](aws-properties-ec2-security-group-rule.md)  
-*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+*Update requires*: [Some interruptions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt)
 
 `SecurityGroupIngress`  <a name="cfn-ec2-securitygroup-securitygroupingress"></a>
 The inbound rules associated with the security group\. There is a short interruption during which you cannot connect to the security group\.  
 *Required*: No  
 *Type*: List of [Ingress](aws-properties-ec2-security-group-rule-1.md)  
-*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+*Update requires*: [Some interruptions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-some-interrupt)
 
 `Tags`  <a name="cfn-ec2-securitygroup-tags"></a>
 Any tags assigned to the security group\.  
@@ -121,23 +121,23 @@ The following example specifies a security group with an ingress and egress rule
 
 ```
 "InstanceSecurityGroup" : {
-   "Type" : "AWS::EC2::SecurityGroup",
-   "Properties" : {
-      "GroupDescription" : "Allow http to client host",
-      "VpcId" : {"Ref" : "myVPC"},
-      "SecurityGroupIngress" : [{
-         "IpProtocol" : "tcp",
-         "FromPort" : 80,
-         "ToPort" : 80,
-         "CidrIp" : "0.0.0.0/0"
-      }],
-      "SecurityGroupEgress" : [{
-         "IpProtocol" : "tcp",
-         "FromPort" : 80,
-         "ToPort" : 80,
-         "CidrIp" : "0.0.0.0/0"
-      }]
-   }
+    "Type" : "AWS::EC2::SecurityGroup",
+    "Properties" : {
+        "GroupDescription" : "Allow http to client host",
+        "VpcId" : {"Ref" : "myVPC"},
+        "SecurityGroupIngress" : [{
+            "IpProtocol" : "tcp",
+            "FromPort" : 80,
+            "ToPort" : 80,
+            "CidrIp" : "0.0.0.0/0"
+        }],
+        "SecurityGroupEgress" : [{
+            "IpProtocol" : "tcp",
+            "FromPort" : 80,
+            "ToPort" : 80,
+            "CidrIp" : "0.0.0.0/0"
+        }]
+    }
 }
 ```
 
@@ -147,15 +147,14 @@ The following example specifies a security group with an ingress and egress rule
 InstanceSecurityGroup:
   Type: AWS::EC2::SecurityGroup
   Properties:
-      GroupDescription: Allow http to client host
-      VpcId:
-         Ref: myVPC
-      SecurityGroupIngress:
+    GroupDescription: Allow http to client host
+    VpcId: Ref: myVPC
+    SecurityGroupIngress:
       - IpProtocol: tcp
         FromPort: 80
         ToPort: 80
         CidrIp: 0.0.0.0/0
-      SecurityGroupEgress:
+    SecurityGroupEgress:
       - IpProtocol: tcp
         FromPort: 80
         ToPort: 80
@@ -170,17 +169,15 @@ When you specify a VPC security group, Amazon EC2 creates a default egress rule 
 
 ```
 "sgwithoutegress": {
-  "Type": "AWS::EC2::SecurityGroup",
-  "Properties": {
-    "GroupDescription": "Limits security group egress traffic",
-    "SecurityGroupEgress": [
-      {
-        "CidrIp": "127.0.0.1/32",
-        "IpProtocol": "-1"
-      }
-    ],
-    "VpcId": { "Ref": "myVPC"}
-   }
+    "Type": "AWS::EC2::SecurityGroup",
+    "Properties": {
+        "GroupDescription": "Limits security group egress traffic",
+        "SecurityGroupEgress": [{
+            "CidrIp": "127.0.0.1/32",
+            "IpProtocol": "-1"
+        }],
+        "VpcId": { "Ref": "myVPC"}
+    }
 }
 ```
 
@@ -192,14 +189,63 @@ sgwithoutegress:
   Properties:
     GroupDescription: Limits security group egress traffic
     SecurityGroupEgress:
-    - CidrIp: 127.0.0.1/32
-      IpProtocol: "-1"
-    VpcId:
-      Ref: myVPC
+      - CidrIp: 127.0.0.1/32
+        IpProtocol: "-1"
+    VpcId: Ref: myVPC
+```
+
+### Allow ping requests<a name="aws-properties-ec2-security-group--examples--Allow_ping_requests"></a>
+
+To allow ping requests, add the ICMP protocol type and specify 8 \(echo request\) for the ICMP type and either 0 or \-1 \(all\) for the ICMP code\. 
+
+#### JSON<a name="aws-properties-ec2-security-group--examples--Allow_ping_requests--json"></a>
+
+```
+"SGPing" : {
+    "Type" : "AWS::EC2::SecurityGroup",
+    "DependsOn": "VPC",
+    "Properties" : {
+        "GroupDescription" : "SG to test ping",
+        "VpcId" : {"Ref" : "VPC"},
+        "SecurityGroupIngress" : [ 
+        { 
+            "IpProtocol" : "tcp", 
+            "FromPort" : 22, 
+            "ToPort" : 22, 
+            "CidrIp" : "10.0.0.0/24" 
+        },
+        { 
+            "IpProtocol" : "icmp", 
+            "FromPort" : 8, 
+            "ToPort" : -1, 
+            "CidrIp" : "10.0.0.0/24" 
+        }]
+    }
+}
+```
+
+#### YAML<a name="aws-properties-ec2-security-group--examples--Allow_ping_requests--yaml"></a>
+
+```
+SGPing:
+  Type: AWS::EC2::SecurityGroup
+  DependsOn: VPC
+  Properties:
+    GroupDescription: SG to test ping
+    VpcId: Ref: VPC
+    SecurityGroupIngress:
+      - IpProtocol: tcp
+        FromPort: 22
+        ToPort: 22
+        CidrIp: 10.0.0.0/24
+      - IpProtocol: icmp
+        FromPort: 8
+        ToPort: -1
+        CidrIp: 10.0.0.0/24
 ```
 
 ## See also<a name="aws-properties-ec2-security-group--seealso"></a>
-+  [Security Groups for Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) in the *Amazon VPC User Guide*
-+  [EC2\-Classic](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html) in the *Amazon EC2 User Guide for Linux Instances* for information about accounts that support EC2\-Classic security groups
-+  [Amazon EC2 Security Groups for Linux Instances ](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon EC2 User Guide for Linux Instances*
++  [Security groups for your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html) in the *Amazon VPC User Guide*
++  [Amazon EC2 security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html) in the *Amazon EC2 User Guide for Linux Instances*
++  [Amazon EC2 security groups](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-security-groups.html) in the *Amazon EC2 User Guide for Windows Instances*
 

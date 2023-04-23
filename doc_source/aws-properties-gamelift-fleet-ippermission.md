@@ -1,6 +1,6 @@
 # AWS::GameLift::Fleet IpPermission<a name="aws-properties-gamelift-fleet-ippermission"></a>
 
-A range of IP addresses and port settings that allow inbound traffic to connect to server processes on an Amazon GameLift hosting resource\. New game sessions that are started on the fleet are assigned an IP address/port number combination, which must fall into the fleet's allowed ranges\. For fleets created with a custom game server, the ranges reflect the server's game session assignments\. For Realtime Servers fleets, Amazon GameLift automatically opens two port ranges, one for TCP messaging and one for UDP, for use by the Realtime servers\.
+A range of IP addresses and port settings that allow inbound traffic to connect to server processes on an instance in a fleet\. New game sessions are assigned an IP address/port number combination, which must fall into the fleet's allowed ranges\. Fleets with custom game builds must have permissions explicitly set\. For Realtime Servers fleets, GameLift automatically opens two port ranges, one for TCP messaging and one for UDP\.
 
 ## Syntax<a name="aws-properties-gamelift-fleet-ippermission-syntax"></a>
 
@@ -30,6 +30,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 `FromPort`  <a name="cfn-gamelift-fleet-ippermission-fromport"></a>
 A starting value for a range of allowed port numbers\.  
+For fleets using Windows and Linux builds, only ports 1026\-60000 are valid\.  
 *Required*: Yes  
 *Type*: Integer  
 *Minimum*: `1`  
@@ -52,6 +53,7 @@ The network communication protocol used by the fleet\.
 
 `ToPort`  <a name="cfn-gamelift-fleet-ippermission-toport"></a>
 An ending value for a range of allowed port numbers\. Port numbers are end\-inclusive\. This value must be higher than `FromPort`\.  
+For fleets using Windows and Linux builds, only ports 1026\-60000 are valid\.  
 *Required*: Yes  
 *Type*: Integer  
 *Minimum*: `1`  
@@ -59,6 +61,7 @@ An ending value for a range of allowed port numbers\. Port numbers are end\-incl
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 ## See also<a name="aws-properties-gamelift-fleet-ippermission--seealso"></a>
-+ [ Create GameLift resources using AWS CloudFormation](https://docs.aws.amazon.com/gamelift/latest/developerguide/resources-cloudformation.html) in the *Amazon GameLift Developer Guide*
++ [ Create GameLift resources using Amazon CloudFront](https://docs.aws.amazon.com/gamelift/latest/developerguide/resources-cloudformation.html) in the *Amazon GameLift Developer Guide*
 +  [Deploy a GameLift fleet for a custom game build](https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating.html) in the *Amazon GameLift Developer Guide* 
 +  [IpPermission](https://docs.aws.amazon.com/gamelift/latest/apireference/API_IpPermission.html) in the *Amazon GameLift API Reference* 
+

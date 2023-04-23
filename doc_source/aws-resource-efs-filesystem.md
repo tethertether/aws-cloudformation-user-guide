@@ -1,6 +1,6 @@
 # AWS::EFS::FileSystem<a name="aws-resource-efs-filesystem"></a>
 
-The `AWS::EFS::FileSystem` resource creates a new, empty file system in Amazon Elastic File System \(Amazon EFS\)\. You must create a mount target \([AWS::EFS::MountTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html)\) to mount your EFS file system on an Amazon Elastic Compute Cloud \(Amazon EC2\) instance or another compute resource\. 
+The `AWS::EFS::FileSystem` resource creates a new, empty file system in Amazon Elastic File System \(Amazon EFS\)\. You must create a mount target \([AWS::EFS::MountTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html)\) to mount your EFS file system on an Amazon EC2 or other AWS cloud compute resource\. 
 
 ## Syntax<a name="aws-resource-efs-filesystem-syntax"></a>
 
@@ -67,19 +67,19 @@ Use the `BackupPolicy` to turn automatic backups on or off for the file system\.
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `BypassPolicyLockoutSafetyCheck`  <a name="cfn-efs-filesystem-bypasspolicylockoutsafetycheck"></a>
-Not currently supported by AWS CloudFormation\.  
+\(Optional\) A boolean that specifies whether or not to bypass the `FileSystemPolicy` lockout safety check\. The lockout safety check determines whether the policy in the request will lock out, or prevent, the IAM principal that is making the request from making future `PutFileSystemPolicy` requests on this file system\. Set `BypassPolicyLockoutSafetyCheck` to `True` only when you intend to prevent the IAM principal that is making the request from making subsequent `PutFileSystemPolicy` requests on this file system\. The default value is `False`\.   
 *Required*: No  
 *Type*: Boolean  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Encrypted`  <a name="cfn-efs-filesystem-encrypted"></a>
-A Boolean value that, if true, creates an encrypted file system\. When creating an encrypted file system, you have the option of specifying a KmsKeyId for an existing AWS Key Management Service \(AWS KMS\) customer master key \(CMK\)\. If you don't specify a CMK, then the default CMK for Amazon EFS, `/aws/elasticfilesystem`, is used to protect the encrypted file system\.   
+A Boolean value that, if true, creates an encrypted file system\. When creating an encrypted file system, you have the option of specifying a KmsKeyId for an existing AWS KMS key\. If you don't specify a KMS key, then the default KMS key for Amazon EFS, `/aws/elasticfilesystem`, is used to protect the encrypted file system\.   
 *Required*: Conditional  
 *Type*: Boolean  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `FileSystemPolicy`  <a name="cfn-efs-filesystem-filesystempolicy"></a>
-The `FileSystemPolicy` for the EFS file system\. A file system policy is an IAM resource policy used to control NFS access to an EFS file system\. For more information, see [Using IAM to Control NFS Access to Amazon EFS](https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html) in the *Amazon EFS User Guide*\.  
+The `FileSystemPolicy` for the EFS file system\. A file system policy is an IAM resource policy used to control NFS access to an EFS file system\. For more information, see [Using IAM to control NFS access to Amazon EFS](https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html) in the *Amazon EFS User Guide*\.  
 *Required*: No  
 *Type*: Json  
 *Minimum*: `1`  
@@ -88,13 +88,13 @@ The `FileSystemPolicy` for the EFS file system\. A file system policy is an IAM 
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `FileSystemTags`  <a name="cfn-efs-filesystem-filesystemtags"></a>
-A value that specifies to create one or more tags associated with the file system\. Each tag is a user\-defined key\-value pair\. Name your file system on creation by including a `"Key":"Name","Value":"{value}"` key\-value pair\.  
+Use to create one or more tags associated with the file system\. Each tag is a user\-defined key\-value pair\. Name your file system on creation by including a `"Key":"Name","Value":"{value}"` key\-value pair\. Each key must be unique\. For more information, see [Tagging AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the * AWS General Reference Guide*\.  
 *Required*: No  
 *Type*: List of [ElasticFileSystemTag](aws-properties-efs-filesystem-elasticfilesystemtag.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `KmsKeyId`  <a name="cfn-efs-filesystem-kmskeyid"></a>
-The ID of the AWS KMS customer master key \(CMK\) to be used to protect the encrypted file system\. This parameter is only required if you want to use a nondefault CMK\. If this parameter is not specified, the default CMK for Amazon EFS is used\. This ID can be in one of the following formats:  
+The ID of the AWS KMS key to be used to protect the encrypted file system\. This parameter is only required if you want to use a nondefault KMS key\. If this parameter is not specified, the default KMS key for Amazon EFS is used\. This ID can be in one of the following formats:  
 + Key ID \- A unique identifier of the key, for example `1234abcd-12ab-34cd-56ef-1234567890ab`\.
 + ARN \- An Amazon Resource Name \(ARN\) for the key, for example `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`\.
 + Key alias \- A previously created display name for a key, for example `alias/projectKey1`\.
@@ -107,9 +107,13 @@ If `KmsKeyId` is specified, the `Encrypted` parameter must be set to true\.
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `LifecyclePolicies`  <a name="cfn-efs-filesystem-lifecyclepolicies"></a>
-A list of policies used by EFS lifecycle management to transition files to the Infrequent Access \(IA\) storage class\.  
+An array of `LifecyclePolicy` objects that define the file system's `LifecycleConfiguration` object\. A `LifecycleConfiguration` object informs EFS lifecycle management and intelligent tiering of the following:  
++ When to move files in the file system from primary storage to the IA storage class\.
++ When to move files that are in IA storage to primary storage\.
+Amazon EFS requires that each `LifecyclePolicy` object have only a single transition\. This means that in a request body, `LifecyclePolicies` needs to be structured as an array of `LifecyclePolicy` objects, one object for each transition, `TransitionToIA`, `TransitionToPrimaryStorageClass`\. See the example requests in the following section for more information\.
 *Required*: No  
 *Type*: List of [LifecyclePolicy](aws-properties-efs-filesystem-lifecyclepolicy.md)  
+*Maximum*: `2`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `PerformanceMode`  <a name="cfn-efs-filesystem-performancemode"></a>
@@ -127,22 +131,22 @@ The throughput, measured in MiB/s, that you want to provision for a file system 
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `ThroughputMode`  <a name="cfn-efs-filesystem-throughputmode"></a>
-Specifies the throughput mode for the file system, either `bursting` or `provisioned`\. If you set `ThroughputMode` to `provisioned`, you must also set a value for `ProvisionedThroughputInMibps`\. After you create the file system, you can decrease your file system's throughput in Provisioned Throughput mode or change between the throughput modes, as long as it’s been more than 24 hours since the last decrease or throughput mode change\. For more information, see [Specifying throughput with provisioned mode](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput) in the *Amazon EFS User Guide*\.   
+Specifies the throughput mode for the file system\. The mode can be `bursting`, `provisioned`, or `elastic`\. If you set `ThroughputMode` to `provisioned`, you must also set a value for `ProvisionedThroughputInMibps`\. After you create the file system, you can decrease your file system's throughput in Provisioned Throughput mode or change between the throughput modes, with certain time restrictions\. For more information, see [Specifying throughput with provisioned mode](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput) in the *Amazon EFS User Guide*\.   
 Default is `bursting`\.  
 *Required*: No  
 *Type*: String  
-*Allowed values*: `bursting | provisioned`  
+*Allowed values*: `bursting | elastic | provisioned`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 ## Return values<a name="aws-resource-efs-filesystem-return-values"></a>
 
 ### Ref<a name="aws-resource-efs-filesystem-return-values-ref"></a>
 
- When you pass the logical ID of this resource to the intrinsic `Ref` function, `Ref` returns the resource ID\. For example: 
+ When you pass the logical ID of this resource to the intrinsic `Ref` function, `Ref` returns the FileSystem ID\. For example: 
 
- `{"Ref":"fs-12345678"}`\.
+ `{"Ref":"logical_file_system_id"}`
 
-For the Amazon EFS file system `fs-12345678`, Ref returns the file system ID\.
+returns `fs-0123456789abcdef2`\.
 
 For more information about using the `Ref` function, see [Ref](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html)\.
 
@@ -155,10 +159,11 @@ For more information about using the `Fn::GetAtt` intrinsic function, see [Fn::G
 #### <a name="aws-resource-efs-filesystem-return-values-fn--getatt-fn--getatt"></a>
 
 `Arn`  <a name="Arn-fn::getatt"></a>
-The Amazon Resource Name \(ARN\) of the EFS file system\. For example: `arn:aws:elasticfilesystem:us-west-2:1111333322228888:file-system/fs-12345678`
+The Amazon Resource Name \(ARN\) of the EFS file system\.  
+Example: `arn:aws:elasticfilesystem:us-west-2:1111333322228888:file-system/fs-0123456789abcdef8`
 
 `FileSystemId`  <a name="FileSystemId-fn::getatt"></a>
-The ID of the EFS file system\. For example: `fs-12345678`
+The ID of the EFS file system\. For example: `fs-abcdef0123456789a`
 
 ## Examples<a name="aws-resource-efs-filesystem--examples"></a>
 
@@ -166,10 +171,10 @@ The ID of the EFS file system\. For example: `fs-12345678`
 
 ### Create an encrypted EFS file system using EFS Standard storage classes<a name="aws-resource-efs-filesystem--examples--Create_an_encrypted_EFS_file_system_using_EFS_Standard_storage_classes"></a>
 
-The following example declares an Amazon EFS file system with the followiing attributes:
+The following example declares an Amazon EFS file system with the following attributes:
 + Uses EFS Standard storage classes\.
 + maxIO performance mode\.
-+ Lifecycle management enabled\.
++ Lifecycle management and Intelligent Tiering enabled\.
 + Encrypted at rest\.
 + Automatic daily backups are enabled\.
 + File system policy granting read\-only access to the EfsReadOnly IAM role\.
@@ -226,6 +231,9 @@ The following example declares an Amazon EFS file system with the followiing att
                 "LifecyclePolicies":[
                     {
                         "TransitionToIA" : "AFTER_30_DAYS"
+                    },
+                    {
+                        "TransitionToPrimaryStorageClass" : "AFTER_1_ACCESS"
                     }
                 ],    
                 "Encrypted": true,
@@ -416,6 +424,7 @@ Resources:
       Encrypted: true
       LifecyclePolicies:
         - TransitionToIA: AFTER_30_DAYS
+        - TransitionToPrimaryStorageClass: AFTER_1_ACCESS
       FileSystemTags:
         - Key: Name
           Value: TestFileSystem
@@ -525,8 +534,11 @@ The following example declares an encrypted Amazon EFS file system using One Zon
                 "LifecyclePolicies":[
                     {
                         "TransitionToIA" : "AFTER_30_DAYS"
+                    },
+                    {
+                        "TransitionToPrimaryStorageClass" : "AFTER_1_ACCESS"
                     }
-                ],    
+                ],
                 "Encrypted": true,
                 "FileSystemTags": [
                     {
@@ -663,6 +675,7 @@ Resources:
       Encrypted: true
       LifecyclePolicies:
         - TransitionToIA: AFTER_30_DAYS
+        - TransitionToPrimaryStorageClass: AFTER_1_ACCESS
       FileSystemTags:
         - Key: Name
           Value: TestFileSystem
@@ -724,6 +737,6 @@ Resources:
 ```
 
 ## See also<a name="aws-resource-efs-filesystem--seealso"></a>
-+  [Amazon EFS: How It Works](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html) 
-+  [Creating an Amazon Elastic File System](https://docs.aws.amazon.com/efs/latest/ug/creating-using-fs.html) 
++  [Amazon EFS: How it works](https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html) 
++  [Creating an Amazon EFS file system](https://docs.aws.amazon.com/efs/latest/ug/creating-using-fs.html) 
 

@@ -1,6 +1,6 @@
 # AWS::SES::Template Template<a name="aws-properties-ses-template-template"></a>
 
-The content of the email, composed of a subject line, an HTML part, and a text\-only part\.
+The content of the email, composed of a subject line and either an HTML part or a text\-only part\.
 
 ## Syntax<a name="aws-properties-ses-template-template-syntax"></a>
 
@@ -36,7 +36,7 @@ The HTML body of the email\.
 
 `SubjectPart`  <a name="cfn-ses-template-template-subjectpart"></a>
 The subject line of the email\.  
-*Required*: No  
+*Required*: Yes  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 

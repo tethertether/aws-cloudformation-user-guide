@@ -33,7 +33,7 @@ Properties:
 ## Properties<a name="aws-resource-ivs-playbackkeypair-properties"></a>
 
 `Name`  <a name="cfn-ivs-playbackkeypair-name"></a>
-An arbitrary string \(a nickname\) assigned to a playback key pair that helps the customer identify that resource\. The value does not need to be unique\.  
+Playback\-key\-pair name\. The value does not need to be unique\.  
 *Required*: No  
 *Type*: String  
 *Minimum*: `0`  
@@ -43,7 +43,7 @@ An arbitrary string \(a nickname\) assigned to a playback key pair that helps th
 
 `PublicKeyMaterial`  <a name="cfn-ivs-playbackkeypair-publickeymaterial"></a>
 The public portion of a customer\-generated key pair\.  
-*Required*: Yes  
+*Required*: No  
 *Type*: String  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 

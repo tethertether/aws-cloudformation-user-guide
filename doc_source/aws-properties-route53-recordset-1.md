@@ -11,7 +11,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ```
 {
   "[AliasTarget](#cfn-route53-recordset-aliastarget)" : AliasTarget,
-  "[Comment](#cfn-route53-recordset-comment)" : String,
+  "[CidrRoutingConfig](#cfn-route53-recordset-cidrroutingconfig)" : CidrRoutingConfig,
   "[Failover](#cfn-route53-recordset-failover)" : String,
   "[GeoLocation](#cfn-route53-recordset-geolocation)" : GeoLocation,
   "[HealthCheckId](#cfn-route53-recordset-healthcheckid)" : String,
@@ -33,7 +33,8 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ```
   [AliasTarget](#cfn-route53-recordset-aliastarget): 
     AliasTarget
-  [Comment](#cfn-route53-recordset-comment): String
+  [CidrRoutingConfig](#cfn-route53-recordset-cidrroutingconfig): 
+    CidrRoutingConfig
   [Failover](#cfn-route53-recordset-failover): String
   [GeoLocation](#cfn-route53-recordset-geolocation): 
     GeoLocation
@@ -57,17 +58,15 @@ To declare this entity in your AWS CloudFormation template, use the following sy
  *Alias resource record sets only:* Information about the AWS resource, such as a CloudFront distribution or an Amazon S3 bucket, that you want to route traffic to\.   
 If you're creating resource records sets for a private hosted zone, note the following:  
 + You can't create an alias resource record set in a private hosted zone to route traffic to a CloudFront distribution\.
-+ Creating geolocation alias resource record sets or latency alias resource record sets in a private hosted zone is unsupported\.
 + For information about creating failover resource record sets in a private hosted zone, see [Configuring Failover in a Private Hosted Zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html) in the *Amazon Route 53 Developer Guide*\.
 *Required*: No  
-*Type*: [AliasTarget](aws-properties-route53-aliastarget.md)  
+*Type*: [AliasTarget](aws-properties-route53-aliastarget-1.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
-`Comment`  <a name="cfn-route53-recordset-comment"></a>
- *Optional:* Any comments you want to include about a change batch request\.  
+`CidrRoutingConfig`  <a name="cfn-route53-recordset-cidrroutingconfig"></a>
+Property description not available\.  
 *Required*: No  
-*Type*: String  
-*Maximum*: `256`  
+*Type*: [CidrRoutingConfig](aws-properties-route53-cidrroutingconfig.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Failover`  <a name="cfn-route53-recordset-failover"></a>
@@ -193,7 +192,6 @@ You can use the \* wildcard as the leftmost label in a domain name, for example,
 
 `Region`  <a name="cfn-route53-recordset-region"></a>
  *Latency\-based resource record sets only:* The Amazon EC2 Region where you created the resource that this resource record set refers to\. The resource typically is an AWS resource, such as an EC2 instance or an ELB load balancer, and is referred to by an IP address or a DNS domain name, depending on the record type\.  
-Although creating latency and latency alias resource record sets in a private hosted zone is allowed, it's not supported\.
 When Amazon Route 53 receives a DNS query for a domain name and type for which you have created latency resource record sets, Route 53 selects the latency resource record set that has the lowest latency between the end user and the associated Amazon EC2 Region\. Route 53 then returns the value that is associated with the selected resource record set\.  
 Note the following:  
 + You can only specify one `ResourceRecord` per latency resource record set\.
@@ -202,7 +200,7 @@ Note the following:
 + You can't create non\-latency resource record sets that have the same values for the `Name` and `Type` elements as latency resource record sets\.
 *Required*: No  
 *Type*: String  
-*Allowed values*: `af-south-1 | ap-east-1 | ap-northeast-1 | ap-northeast-2 | ap-northeast-3 | ap-south-1 | ap-southeast-1 | ap-southeast-2 | ca-central-1 | cn-north-1 | cn-northwest-1 | eu-central-1 | eu-north-1 | eu-south-1 | eu-west-1 | eu-west-2 | eu-west-3 | me-south-1 | sa-east-1 | us-east-1 | us-east-2 | us-west-1 | us-west-2`  
+*Allowed values*: `af-south-1 | ap-east-1 | ap-northeast-1 | ap-northeast-2 | ap-northeast-3 | ap-south-1 | ap-southeast-1 | ap-southeast-2 | ap-southeast-3 | ca-central-1 | cn-north-1 | cn-northwest-1 | eu-central-1 | eu-north-1 | eu-south-1 | eu-west-1 | eu-west-2 | eu-west-3 | me-south-1 | sa-east-1 | us-east-1 | us-east-2 | us-west-1 | us-west-2`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `ResourceRecords`  <a name="cfn-route53-recordset-resourcerecords"></a>

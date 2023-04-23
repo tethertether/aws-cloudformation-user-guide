@@ -16,8 +16,9 @@ To declare this entity in your AWS CloudFormation template, use the following sy
   "Properties" : {
       "[RuleName](#cfn-xray-samplingrule-rulename)" : String,
       "[SamplingRule](#cfn-xray-samplingrule-samplingrule)" : SamplingRule,
+      "[SamplingRuleRecord](#cfn-xray-samplingrule-samplingrulerecord)" : SamplingRuleRecord,
       "[SamplingRuleUpdate](#cfn-xray-samplingrule-samplingruleupdate)" : SamplingRuleUpdate,
-      "[Tags](#cfn-xray-samplingrule-tags)" : [ Json, ... ]
+      "[Tags](#cfn-xray-samplingrule-tags)" : [ TagsItems, ... ]
     }
 }
 ```
@@ -30,10 +31,12 @@ Properties:
   [RuleName](#cfn-xray-samplingrule-rulename): String
   [SamplingRule](#cfn-xray-samplingrule-samplingrule): 
     SamplingRule
+  [SamplingRuleRecord](#cfn-xray-samplingrule-samplingrulerecord): 
+    SamplingRuleRecord
   [SamplingRuleUpdate](#cfn-xray-samplingrule-samplingruleupdate): 
     SamplingRuleUpdate
   [Tags](#cfn-xray-samplingrule-tags): 
-    - Json
+    - TagsItems
 ```
 
 ## Properties<a name="aws-resource-xray-samplingrule-properties"></a>
@@ -53,6 +56,12 @@ Must be provided if creating a new sampling rule\. Not valid when updating an ex
 *Type*: [SamplingRule](aws-properties-xray-samplingrule-samplingrule.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
+`SamplingRuleRecord`  <a name="cfn-xray-samplingrule-samplingrulerecord"></a>
+Property description not available\.  
+*Required*: No  
+*Type*: [SamplingRuleRecord](aws-properties-xray-samplingrule-samplingrulerecord.md)  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
 `SamplingRuleUpdate`  <a name="cfn-xray-samplingrule-samplingruleupdate"></a>
 A document specifying changes to a sampling rule's configuration\.  
 Must be provided if updating an existing sampling rule\. Not valid when creating a new sampling rule\.  
@@ -65,7 +74,7 @@ The `Version` of a sampling rule cannot be updated, and is not part of `Sampling
 An array of key\-value pairs to apply to this resource\.  
 For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)\.  
 *Required*: No  
-*Type*: List of Json  
+*Type*: List of [TagsItems](aws-properties-xray-samplingrule-tagsitems.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 ## Return values<a name="aws-resource-xray-samplingrule-return-values"></a>

@@ -32,13 +32,13 @@ Properties:
 
 `Name`  <a name="cfn-s3objectlambda-accesspoint-name"></a>
 The name of this access point\.  
-*Required*: Yes  
+*Required*: No  
 *Type*: String  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `ObjectLambdaConfiguration`  <a name="cfn-s3objectlambda-accesspoint-objectlambdaconfiguration"></a>
 A configuration used when creating an Object Lambda Access Point\.  
-*Required*: No  
+*Required*: Yes  
 *Type*: [ObjectLambdaConfiguration](aws-properties-s3objectlambda-accesspoint-objectlambdaconfiguration.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
@@ -61,3 +61,24 @@ Specifies the ARN for the Object Lambda Access Point\.
 
 `CreationDate`  <a name="CreationDate-fn::getatt"></a>
 The date and time when the specified Object Lambda Access Point was created\.
+
+`PolicyStatus`  <a name="PolicyStatus-fn::getatt"></a>
+Property description not available\.
+
+`PolicyStatus.IsPublic`  <a name="PolicyStatus.IsPublic-fn::getatt"></a>
+Property description not available\.
+
+`PublicAccessBlockConfiguration`  <a name="PublicAccessBlockConfiguration-fn::getatt"></a>
+Property description not available\.
+
+`PublicAccessBlockConfiguration.BlockPublicAcls`  <a name="PublicAccessBlockConfiguration.BlockPublicAcls-fn::getatt"></a>
+Property description not available\.
+
+`PublicAccessBlockConfiguration.BlockPublicPolicy`  <a name="PublicAccessBlockConfiguration.BlockPublicPolicy-fn::getatt"></a>
+Property description not available\.
+
+`PublicAccessBlockConfiguration.IgnorePublicAcls`  <a name="PublicAccessBlockConfiguration.IgnorePublicAcls-fn::getatt"></a>
+Property description not available\.
+
+`PublicAccessBlockConfiguration.RestrictPublicBuckets`  <a name="PublicAccessBlockConfiguration.RestrictPublicBuckets-fn::getatt"></a>
+Property description not available\.

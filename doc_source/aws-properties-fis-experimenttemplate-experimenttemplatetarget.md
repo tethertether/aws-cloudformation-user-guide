@@ -13,6 +13,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ```
 {
   "[Filters](#cfn-fis-experimenttemplate-experimenttemplatetarget-filters)" : [ ExperimentTemplateTargetFilter, ... ],
+  "[Parameters](#cfn-fis-experimenttemplate-experimenttemplatetarget-parameters)" : {Key : Value, ...},
   "[ResourceArns](#cfn-fis-experimenttemplate-experimenttemplatetarget-resourcearns)" : [ String, ... ],
   "[ResourceTags](#cfn-fis-experimenttemplate-experimenttemplatetarget-resourcetags)" : {Key : Value, ...},
   "[ResourceType](#cfn-fis-experimenttemplate-experimenttemplatetarget-resourcetype)" : String,
@@ -25,6 +26,8 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ```
   [Filters](#cfn-fis-experimenttemplate-experimenttemplatetarget-filters): 
     - ExperimentTemplateTargetFilter
+  [Parameters](#cfn-fis-experimenttemplate-experimenttemplatetarget-parameters): 
+    Key : Value
   [ResourceArns](#cfn-fis-experimenttemplate-experimenttemplatetarget-resourcearns): 
     - String
   [ResourceTags](#cfn-fis-experimenttemplate-experimenttemplatetarget-resourcetags): 
@@ -41,6 +44,12 @@ The filters to apply to identify target resources using specific attributes\.
 *Type*: List of [ExperimentTemplateTargetFilter](aws-properties-fis-experimenttemplate-experimenttemplatetargetfilter.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
+`Parameters`  <a name="cfn-fis-experimenttemplate-experimenttemplatetarget-parameters"></a>
+The parameters for the resource type\.  
+*Required*: No  
+*Type*: Map of String  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
 `ResourceArns`  <a name="cfn-fis-experimenttemplate-experimenttemplatetarget-resourcearns"></a>
 The Amazon Resource Names \(ARNs\) of the resources\.  
 *Required*: No  
@@ -55,10 +64,10 @@ The tags for the target resources\.
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `ResourceType`  <a name="cfn-fis-experimenttemplate-experimenttemplatetarget-resourcetype"></a>
-The AWS resource type\. The resource type must be supported for the specified action\.  
+The resource type\. The resource type must be supported for the specified action\.  
 *Required*: Yes  
 *Type*: String  
-*Maximum*: `64`  
+*Maximum*: `128`  
 *Pattern*: `[\S]+`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 

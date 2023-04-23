@@ -1,8 +1,8 @@
 # AWS::QuickSight::Dashboard<a name="aws-resource-quicksight-dashboard"></a>
 
-Creates a dashboard from a template\. To first create a template, see the ` CreateTemplate` API operation\.
+Creates a dashboard from a template\. To first create a template, see the `CreateTemplate` API operation\.
 
-A dashboard is an entity in QuickSight that identifies QuickSight reports, created from analyses\. You can share QuickSight dashboards\. With the right permissions, you can create scheduled email reports from them\. If you have the correct permissions, you can create a dashboard from a template that exists in a different AWS account\.
+A dashboard is an entity in Amazon QuickSight that identifies Amazon QuickSight reports, created from analyses\. You can share Amazon QuickSight dashboards\. With the right permissions, you can create scheduled email reports from them\. If you have the correct permissions, you can create a dashboard from a template that exists in a different AWS account\.
 
 ## Syntax<a name="aws-resource-quicksight-dashboard-syntax"></a>
 
@@ -66,13 +66,13 @@ The ID for the dashboard, also added to the IAM policy\.
 *Required*: Yes  
 *Type*: String  
 *Minimum*: `1`  
-*Maximum*: `2048`  
+*Maximum*: `512`  
 *Pattern*: `[\w\-]+`  
 *Update requires*: [Replacement](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-replacement)
 
 `DashboardPublishOptions`  <a name="cfn-quicksight-dashboard-dashboardpublishoptions"></a>
 Options for publishing the dashboard when you create it:  
-+  `AvailabilityStatus` for `AdHocFilteringOption` \- This status can be either `ENABLED` or `DISABLED`\. When this is set to `DISABLED`, QuickSight disables the left filter pane on the published dashboard, which can be used for ad hoc \(one\-time\) filtering\. This option is `ENABLED` by default\. 
++  `AvailabilityStatus` for `AdHocFilteringOption` \- This status can be either `ENABLED` or `DISABLED`\. When this is set to `DISABLED`, Amazon QuickSight disables the left filter pane on the published dashboard, which can be used for ad hoc \(one\-time\) filtering\. This option is `ENABLED` by default\. 
 +  `AvailabilityStatus` for `ExportToCSVOption` \- This status can be either `ENABLED` or `DISABLED`\. The visual option to export data to \.CSV format isn't enabled when this is set to `DISABLED`\. This option is `ENABLED` by default\. 
 +  `VisibilityState` for `SheetControlsOption` \- This visibility state can be either `COLLAPSED` or `EXPANDED`\. This option is `COLLAPSED` by default\. 
 *Required*: No  
@@ -85,7 +85,6 @@ The display name of the dashboard\.
 *Type*: String  
 *Minimum*: `1`  
 *Maximum*: `2048`  
-*Pattern*: `[\u0020-\u00FF]+`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Parameters`  <a name="cfn-quicksight-dashboard-parameters"></a>
@@ -103,9 +102,9 @@ To specify no permissions, omit the permissions list\.
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `SourceEntity`  <a name="cfn-quicksight-dashboard-sourceentity"></a>
-The entity that you are using as a source when you create the dashboard\. In `SourceEntity`, you specify the type of object you're using as source\. You can only create a dashboard from a template, so you use a `SourceTemplate` entity\. If you need to create a dashboard from an analysis, first convert the analysis to a template by using the `CreateTheme` API operation\. For `SourceTemplate`, specify the Amazon Resource Name \(ARN\) of the source template\. The `SourceTemplate`ARN can contain any AWS Account and any QuickSight\-supported AWS Region\.   
+The entity that you are using as a source when you create the dashboard\. In `SourceEntity`, you specify the type of object that you want to use\. You can only create a dashboard from a template, so you use a `SourceTemplate` entity\. If you need to create a dashboard from an analysis, first convert the analysis to a template by using the `CreateTemplate` API operation\. For `SourceTemplate`, specify the Amazon Resource Name \(ARN\) of the source template\. The `SourceTemplate`ARN can contain any AWS account; and any QuickSight\-supported AWS Region\.   
 Use the `DataSetReferences` entity within `SourceTemplate` to list the replacement datasets for the placeholders listed in the original\. The schema in each dataset must match its placeholder\.   
-*Required*: No  
+*Required*: Yes  
 *Type*: [DashboardSourceEntity](aws-properties-quicksight-dashboard-dashboardsourceentity.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
@@ -147,3 +146,36 @@ The time that the dashboard was last published\.
 
 `LastUpdatedTime`  <a name="LastUpdatedTime-fn::getatt"></a>
 The time that the dashboard was last updated\.
+
+`Version`  <a name="Version-fn::getatt"></a>
+The version of the dashboard\.
+
+`Version.Arn`  <a name="Version.Arn-fn::getatt"></a>
+Property description not available\.
+
+`Version.CreatedTime`  <a name="Version.CreatedTime-fn::getatt"></a>
+Property description not available\.
+
+`Version.DataSetArns`  <a name="Version.DataSetArns-fn::getatt"></a>
+Property description not available\.
+
+`Version.Description`  <a name="Version.Description-fn::getatt"></a>
+Property description not available\.
+
+`Version.Errors`  <a name="Version.Errors-fn::getatt"></a>
+Property description not available\.
+
+`Version.Sheets`  <a name="Version.Sheets-fn::getatt"></a>
+Property description not available\.
+
+`Version.SourceEntityArn`  <a name="Version.SourceEntityArn-fn::getatt"></a>
+Property description not available\.
+
+`Version.Status`  <a name="Version.Status-fn::getatt"></a>
+Property description not available\.
+
+`Version.ThemeArn`  <a name="Version.ThemeArn-fn::getatt"></a>
+Property description not available\.
+
+`Version.VersionNumber`  <a name="Version.VersionNumber-fn::getatt"></a>
+Property description not available\.

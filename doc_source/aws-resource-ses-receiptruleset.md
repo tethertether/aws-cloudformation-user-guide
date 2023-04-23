@@ -2,7 +2,7 @@
 
 Creates an empty receipt rule set\.
 
-For information about setting up receipt rule sets, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html)\.
+For information about setting up receipt rule sets, see the [Amazon SES Developer Guide](https://docs.aws.amazon.com/ses/latest/dg/receiving-email-concepts.html#receiving-email-concepts-rules)\.
 
 You can execute this operation no more than once per second\.
 
@@ -41,7 +41,7 @@ The name of the receipt rule set to reorder\.
 
 ### Ref<a name="aws-resource-ses-receiptruleset-return-values-ref"></a>
 
-When you pass the logical ID of this resource to the intrinsic `Ref` function, `Ref` returns the resource name\. For example:
+When you pass the logical ID of this resource to the intrinsic `Ref` function, `Ref` returns the resource name\.
 
 For more information about using the `Ref` function, see [Ref](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html)\.
 

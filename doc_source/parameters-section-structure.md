@@ -96,11 +96,11 @@ Parameters:
 ## Properties<a name="parameters-section-structure-properties"></a>
 
 `AllowedPattern`  
-A regular expression that represents the patterns to allow for `String` types\. The pattern must match the entire parameter value provided\.  
+A regular expression that represents the patterns to allow for `String` or `CommaDelimitedList` types\. When applied on a parameter of type `String`, the pattern must match the entire parameter value provided\. When applied to a parameter of type `CommaDelimitedList`, the pattern must match each value in the list\.  
 *Required*: No
 
 `AllowedValues`  
-An array containing the list of values allowed for the parameter\.  
+An array containing the list of values allowed for the parameter\. When applied to a parameter of type `String`, the parameter value must be one of the allowed values\. When applied to a parameter of type `CommaDelimitedList`, each value in the list must be one of the specified allowed values\.  
 *Required*: No
 
 `ConstraintDescription`  
@@ -136,6 +136,7 @@ A numeric value that determines the smallest numeric value you want to allow for
 
 `NoEcho`  
 Whether to mask the parameter value to prevent it from being displayed in the console, command line tools, or API\. If you set the `NoEcho` attribute to `true`, CloudFormation returns the parameter value masked as asterisks \(\*\*\*\*\*\) for any calls that describe the stack or stack events, except for information stored in the locations specified below\.  
+*Required*: No  
 Using the `NoEcho` attribute does not mask any information stored in the following:  
 + The `Metadata` template section\. CloudFormation does not transform, modify, or redact any information you include in the `Metadata` section\. For more information, see [Metadata](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/metadata-section-structure.html)\.
 + The `Outputs` template section\. For more information, see [Outputs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html)\.
@@ -143,7 +144,9 @@ Using the `NoEcho` attribute does not mask any information stored in the followi
 We strongly recommend you do not use these mechanisms to include sensitive information, such as passwords or secrets\.
 Rather than embedding sensitive information directly in your CloudFormation templates, we recommend you use dynamic parameters in the stack template to reference sensitive information that is stored and managed outside of CloudFormation, such as in the AWS Systems Manager Parameter Store or AWS Secrets Manager\.  
 For more information, see the [Do not embed credentials in your templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#creds) best practice\.
-*Required*: No
+We strongly recommend against including `NoEcho` parameters, or any sensitive data, in resource properties that are part of a resource's primary identifier\.  
+When a `NoEcho` parameter is included in a property that forms a primary resource identifier, CloudFormation may use the *actual plaintext value* in the primary resource identifier\. This resource ID may appear in any derived outputs or destinations\.  
+To determine which resource properties comprise a resource type's primary identifier, refer to the [resource reference documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) for that resource\. In the **Return values** section, the `Ref` function return value represents the resource properties that comprise the resource type's primary identifier\.
 
 `Type`  <a name="parameters-section-structure-properties-type"></a>
 The data type for the parameter \(`DataType`\)\.  
@@ -170,7 +173,7 @@ Parameters that correspond to existing parameters in Systems Manager Parameter S
 
 AWS\-specific parameter types are helpful in catching invalid values at the start of creating or updating a stack\. To specify parameters with AWS\-specific types, a template user must enter existing AWS values that are in their AWS account\. AWS CloudFormation validates these input values against existing values in the account\. For example, with the `AWS::EC2::VPC::Id` parameter type, a user must [enter an existing VPC ID](cfn-using-console-create-stack-parameters.md) that is in the account and region in which they are creating the stack\.
 
-If you want to allow template users to enter input values from different AWS accounts, don't define parameters with AWS\-specific types; instead, define parameters of type `String` \(or `CommaDelimitedList`\)\.
+If you want to allow template users to enter input values from different AWS accounts, don't define parameters with AWS\-specific types; instead, define parameters of type `String` or `CommaDelimitedList`\.
 
 ### Supported AWS\-specific parameter types<a name="aws-specific-parameter-types-supported"></a>
 
@@ -376,7 +379,7 @@ Parameters:
 
 #### AWS CLI and API support<a name="parameters-section-cli-support"></a>
 
-Currently, users can't use the AWS CLI or AWS CloudFormation API to view a list of valid values for AWS\-specific parameters\. However, they can view information about each parameter, such as the parameter type, by using the [aws cloudformation get\-template\-summary](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/get-template-summary.html) command or [https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_GetTemplateSummary.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_GetTemplateSummary.html) API\.
+Currently, users can't use the AWS CLI or AWS CloudFormation API to view a list of valid values for AWS\-specific parameters\. However, they can view information about each parameter, such as the parameter type, by using the [https://docs.aws.amazon.com/cli/latest/reference/cloudformation/get-template-summary.html](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/get-template-summary.html) command or [https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_GetTemplateSummary.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_GetTemplateSummary.html) API\.
 
 ### Comma\-delimited list parameter type<a name="parameters-section-structure-comma-list-type"></a>
 

@@ -12,6 +12,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 {
   "Type" : "AWS::FraudDetector::Detector",
   "Properties" : {
+      "[AssociatedModels](#cfn-frauddetector-detector-associatedmodels)" : [ Model, ... ],
       "[Description](#cfn-frauddetector-detector-description)" : String,
       "[DetectorId](#cfn-frauddetector-detector-detectorid)" : String,
       "[DetectorVersionStatus](#cfn-frauddetector-detector-detectorversionstatus)" : String,
@@ -28,6 +29,8 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 ```
 Type: AWS::FraudDetector::Detector
 Properties: 
+  [AssociatedModels](#cfn-frauddetector-detector-associatedmodels): 
+    - Model
   [Description](#cfn-frauddetector-detector-description): String
   [DetectorId](#cfn-frauddetector-detector-detectorid): String
   [DetectorVersionStatus](#cfn-frauddetector-detector-detectorversionstatus): String
@@ -41,6 +44,12 @@ Properties:
 ```
 
 ## Properties<a name="aws-resource-frauddetector-detector-properties"></a>
+
+`AssociatedModels`  <a name="cfn-frauddetector-detector-associatedmodels"></a>
+The models to associate with this detector\. You must provide the ARNs of all the models you want to associate\.   
+*Required*: No  
+*Type*: List of [Model](aws-properties-frauddetector-detector-model.md)  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Description`  <a name="cfn-frauddetector-detector-description"></a>
 The detector description\.  
@@ -121,6 +130,15 @@ Timestamp of when detector was created\.
 
 `DetectorVersionId`  <a name="DetectorVersionId-fn::getatt"></a>
 The name of the detector\.
+
+`EventType.Arn`  <a name="EventType.Arn-fn::getatt"></a>
+Property description not available\.
+
+`EventType.CreatedTime`  <a name="EventType.CreatedTime-fn::getatt"></a>
+Property description not available\.
+
+`EventType.LastUpdatedTime`  <a name="EventType.LastUpdatedTime-fn::getatt"></a>
+Property description not available\.
 
 `LastUpdatedTime`  <a name="LastUpdatedTime-fn::getatt"></a>
 Timestamp of when detector was last updated\.

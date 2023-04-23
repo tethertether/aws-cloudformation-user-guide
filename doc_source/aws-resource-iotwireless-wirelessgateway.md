@@ -13,9 +13,12 @@ To declare this entity in your AWS CloudFormation template, use the following sy
   "Type" : "AWS::IoTWireless::WirelessGateway",
   "Properties" : {
       "[Description](#cfn-iotwireless-wirelessgateway-description)" : String,
+      "[LastUplinkReceivedAt](#cfn-iotwireless-wirelessgateway-lastuplinkreceivedat)" : String,
       "[LoRaWAN](#cfn-iotwireless-wirelessgateway-lorawan)" : LoRaWANGateway,
       "[Name](#cfn-iotwireless-wirelessgateway-name)" : String,
-      "[Tags](#cfn-iotwireless-wirelessgateway-tags)" : [ [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html), ... ]
+      "[Tags](#cfn-iotwireless-wirelessgateway-tags)" : [ [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html), ... ],
+      "[ThingArn](#cfn-iotwireless-wirelessgateway-thingarn)" : String,
+      "[ThingName](#cfn-iotwireless-wirelessgateway-thingname)" : String
     }
 }
 ```
@@ -26,17 +29,26 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 Type: AWS::IoTWireless::WirelessGateway
 Properties: 
   [Description](#cfn-iotwireless-wirelessgateway-description): String
+  [LastUplinkReceivedAt](#cfn-iotwireless-wirelessgateway-lastuplinkreceivedat): String
   [LoRaWAN](#cfn-iotwireless-wirelessgateway-lorawan): 
     LoRaWANGateway
   [Name](#cfn-iotwireless-wirelessgateway-name): String
   [Tags](#cfn-iotwireless-wirelessgateway-tags): 
     - [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)
+  [ThingArn](#cfn-iotwireless-wirelessgateway-thingarn): String
+  [ThingName](#cfn-iotwireless-wirelessgateway-thingname): String
 ```
 
 ## Properties<a name="aws-resource-iotwireless-wirelessgateway-properties"></a>
 
 `Description`  <a name="cfn-iotwireless-wirelessgateway-description"></a>
 The description of the new resource\. The maximum length is 2048 characters\.  
+*Required*: No  
+*Type*: String  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
+`LastUplinkReceivedAt`  <a name="cfn-iotwireless-wirelessgateway-lastuplinkreceivedat"></a>
+The date and time when the most recent uplink was received\.  
 *Required*: No  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
@@ -48,16 +60,29 @@ The gateway configuration information to use to create the wireless gateway\.
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Name`  <a name="cfn-iotwireless-wirelessgateway-name"></a>
-The name of the new resource\. The maximum length is 256 characters\.  
+The name of the new resource\.  
+*Required*: No  
+*Type*: String  
+*Maximum*: `256`  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
+`Tags`  <a name="cfn-iotwireless-wirelessgateway-tags"></a>
+The tags are an array of key\-value pairs to attach to the specified resource\. Tags can have a minimum of 0 and a maximum of 50 items\.  
+*Required*: No  
+*Type*: List of [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)  
+*Maximum*: `200`  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
+`ThingArn`  <a name="cfn-iotwireless-wirelessgateway-thingarn"></a>
+The ARN of the thing to associate with the wireless gateway\.  
 *Required*: No  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
-`Tags`  <a name="cfn-iotwireless-wirelessgateway-tags"></a>
-An array of key\-value pairs to apply to this resource\. Tags can have a minimum of 0 and a maximum of 50 items\.  
-For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)\.  
+`ThingName`  <a name="cfn-iotwireless-wirelessgateway-thingname"></a>
+Property description not available\.  
 *Required*: No  
-*Type*: List of [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)  
+*Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 ## Return values<a name="aws-resource-iotwireless-wirelessgateway-return-values"></a>
@@ -75,6 +100,3 @@ The ARN of the wireless gateway created\.
 
 `Id`  <a name="Id-fn::getatt"></a>
 The ID of the wireless gateway created\.
-
-`ThingName`  <a name="ThingName-fn::getatt"></a>
-The name of the thing associated with the wireless gateway\. The value is empty if a thing isn't associated with the gateway\.

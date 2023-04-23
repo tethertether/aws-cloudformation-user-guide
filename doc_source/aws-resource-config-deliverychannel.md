@@ -69,7 +69,7 @@ Updates are not supported\. To change the name, you must run two separate update
 
 `S3BucketName`  <a name="cfn-config-deliverychannel-s3bucketname"></a>
 The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files\.  
-If you specify a bucket that belongs to another AWS account, that bucket must have policies that grant access permissions to AWS Config\. For more information, see [Permissions for the Amazon S3 Bucket](https://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html) in the AWS Config Developer Guide\.  
+If you specify a bucket that belongs to another AWS account, that bucket must have policies that grant access permissions to AWS Config\. For more information, see [Permissions for the Amazon S3 Bucket](https://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html) in the * AWS Config Developer Guide*\.  
 *Required*: Yes  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
@@ -81,14 +81,14 @@ The prefix for the specified Amazon S3 bucket\.
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `S3KmsKeyArn`  <a name="cfn-config-deliverychannel-s3kmskeyarn"></a>
-The Amazon Resource Name \(ARN\) of the AWS Key Management Service \(KMS\) customer managed key \(CMK\) used to encrypt objects delivered by AWS Config\. Must belong to the same Region as the destination S3 bucket\.  
+The Amazon Resource Name \(ARN\) of the AWS Key Management Service \(AWS KMS \) AWS KMS key \(KMS key\) used to encrypt objects delivered by AWS Config\. Must belong to the same Region as the destination S3 bucket\.  
 *Required*: No  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `SnsTopicARN`  <a name="cfn-config-deliverychannel-snstopicarn"></a>
 The Amazon Resource Name \(ARN\) of the Amazon SNS topic to which AWS Config sends notifications about configuration changes\.  
-If you choose a topic from another account, the topic must have policies that grant access permissions to AWS Config\. For more information, see [Permissions for the Amazon SNS Topic](https://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html) in the AWS Config Developer Guide\.  
+If you choose a topic from another account, the topic must have policies that grant access permissions to AWS Config\. For more information, see [Permissions for the Amazon SNS Topic](https://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html) in the * AWS Config Developer Guide*\.  
 *Required*: No  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)

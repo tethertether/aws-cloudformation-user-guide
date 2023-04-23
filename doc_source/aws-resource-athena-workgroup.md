@@ -17,8 +17,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
       "[RecursiveDeleteOption](#cfn-athena-workgroup-recursivedeleteoption)" : Boolean,
       "[State](#cfn-athena-workgroup-state)" : String,
       "[Tags](#cfn-athena-workgroup-tags)" : [ [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html), ... ],
-      "[WorkGroupConfiguration](#cfn-athena-workgroup-workgroupconfiguration)" : WorkGroupConfiguration,
-      "[WorkGroupConfigurationUpdates](#cfn-athena-workgroup-workgroupconfigurationupdates)" : WorkGroupConfigurationUpdates
+      "[WorkGroupConfiguration](#cfn-athena-workgroup-workgroupconfiguration)" : WorkGroupConfiguration
     }
 }
 ```
@@ -36,8 +35,6 @@ Properties:
     - [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)
   [WorkGroupConfiguration](#cfn-athena-workgroup-workgroupconfiguration): 
     WorkGroupConfiguration
-  [WorkGroupConfigurationUpdates](#cfn-athena-workgroup-workgroupconfigurationupdates): 
-    WorkGroupConfigurationUpdates
 ```
 
 ## Properties<a name="aws-resource-athena-workgroup-properties"></a>
@@ -71,21 +68,15 @@ The state of the workgroup: ENABLED or DISABLED\.
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Tags`  <a name="cfn-athena-workgroup-tags"></a>
-An array of key\-value pairs to apply to this resource\.  
+The tags \(key\-value pairs\) to associate with this resource\.  
 *Required*: No  
 *Type*: List of [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `WorkGroupConfiguration`  <a name="cfn-athena-workgroup-workgroupconfiguration"></a>
-The configuration of the workgroup, which includes the location in Amazon S3 where query results are stored, the encryption option, if any, used for query results, whether Amazon CloudWatch Metrics are enabled for the workgroup, and the limit for the amount of bytes scanned \(cutoff\) per query, if it is specified\. The [EnforceWorkGroupConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfigurationupdates.html#cfn-athena-workgroup-workgroupconfigurationupdates-enforceworkgroupconfiguration) option determines whether workgroup settings override client\-side query settings\.  
+The configuration of the workgroup, which includes the location in Amazon S3 where query results are stored, the encryption option, if any, used for query results, whether Amazon CloudWatch Metrics are enabled for the workgroup, and the limit for the amount of bytes scanned \(cutoff\) per query, if it is specified\. The [EnforceWorkGroupConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-athena-workgroup-workgroupconfiguration.html#cfn-athena-workgroup-workgroupconfiguration-enforceworkgroupconfiguration) option determines whether workgroup settings override client\-side query settings\.  
 *Required*: No  
 *Type*: [WorkGroupConfiguration](aws-properties-athena-workgroup-workgroupconfiguration.md)  
-*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
-
-`WorkGroupConfigurationUpdates`  <a name="cfn-athena-workgroup-workgroupconfigurationupdates"></a>
-The configuration information that will be updated for this workgroup, which includes the location in Amazon S3 where query results are stored, the encryption option, if any, used for query results, whether the Amazon CloudWatch Metrics are enabled for the workgroup, whether the workgroup settings override the client\-side settings, and the data usage limit for the amount of bytes scanned per query, if it is specified\.  
-*Required*: No  
-*Type*: [WorkGroupConfigurationUpdates](aws-properties-athena-workgroup-workgroupconfigurationupdates.md)  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 ## Return values<a name="aws-resource-athena-workgroup-return-values"></a>
@@ -109,8 +100,8 @@ For more information about using the `Fn::GetAtt` intrinsic function, see [Fn::G
 `CreationTime`  <a name="CreationTime-fn::getatt"></a>
 The date and time the workgroup was created, as a UNIX timestamp in seconds\. For example: `1582761016`\.
 
-`EffectiveEngineVersion`  <a name="EffectiveEngineVersion-fn::getatt"></a>
-Not currently supported by AWS CloudFormation\.
+`WorkGroupConfiguration.EngineVersion.EffectiveEngineVersion`  <a name="WorkGroupConfiguration.EngineVersion.EffectiveEngineVersion-fn::getatt"></a>
+Property description not available\.
 
 ## Examples<a name="aws-resource-athena-workgroup--examples"></a>
 

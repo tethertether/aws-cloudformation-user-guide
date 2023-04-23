@@ -40,6 +40,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
 
 `BlockDurationMinutes`  <a name="cfn-elasticmapreduce-cluster-spotprovisioningspecification-blockdurationminutes"></a>
 The defined duration for Spot Instances \(also known as Spot blocks\) in minutes\. When specified, the Spot Instance does not terminate before the defined duration expires, and defined duration pricing for Spot Instances applies\. Valid values are 60, 120, 180, 240, 300, or 360\. The duration period starts as soon as a Spot Instance receives its instance ID\. At the end of the duration, Amazon EC2 marks the Spot Instance for termination and provides a Spot Instance termination notice, which gives the instance a two\-minute warning before it terminates\.   
+Spot Instances with a defined duration \(also known as Spot blocks\) are no longer available to new customers from July 1, 2021\. For customers who have previously used the feature, we will continue to support Spot Instances with a defined duration until December 31, 2022\. 
 *Required*: No  
 *Type*: Integer  
 *Minimum*: `0`  
@@ -53,7 +54,7 @@ The action to take when `TargetSpotCapacity` has not been fulfilled when the `Ti
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `TimeoutDurationMinutes`  <a name="cfn-elasticmapreduce-cluster-spotprovisioningspecification-timeoutdurationminutes"></a>
-The spot provisioning timeout period in minutes\. If Spot Instances are not provisioned within this time period, the `TimeOutAction` is taken\. Minimum value is 5 and maximum value is 1440\. The timeout applies only during initial provisioning, when the cluster is first created\.  
+The Spot provisioning timeout period in minutes\. If Spot Instances are not provisioned within this time period, the `TimeOutAction` is taken\. Minimum value is 5 and maximum value is 1440\. The timeout applies only during initial provisioning, when the cluster is first created\.  
 *Required*: Yes  
 *Type*: Integer  
 *Minimum*: `0`  

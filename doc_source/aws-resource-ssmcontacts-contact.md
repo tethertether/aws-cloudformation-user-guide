@@ -1,6 +1,6 @@
 # AWS::SSMContacts::Contact<a name="aws-resource-ssmcontacts-contact"></a>
 
-The `AWS::SSMContacts::Contact` resource specifies a contact\. Incident Manager Contacts are a subset of actions and data types that you can use for managing responder engagement and interaction\.
+The `AWS::SSMContacts::Contact` resource specifies a contact or escalation plan\. Incident Manager contacts are a subset of actions and data types that you can use for managing responder engagement and interaction\.
 
 ## Syntax<a name="aws-resource-ssmcontacts-contact-syntax"></a>
 
@@ -47,9 +47,9 @@ The unique and identifiable alias of the contact or escalation plan\.
 The full name of the contact or escalation plan\.  
 *Required*: Yes  
 *Type*: String  
-*Minimum*: `1`  
+*Minimum*: `0`  
 *Maximum*: `255`  
-*Pattern*: `^[a-zA-Z0-9_\-\s\.]*$`  
+*Pattern*: `^[\p{L}\p{Z}\p{N}_.\-]*$`  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
 
 `Plan`  <a name="cfn-ssmcontacts-contact-plan"></a>

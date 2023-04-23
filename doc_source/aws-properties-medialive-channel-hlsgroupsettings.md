@@ -44,6 +44,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
   "[Mode](#cfn-medialive-channel-hlsgroupsettings-mode)" : String,
   "[OutputSelection](#cfn-medialive-channel-hlsgroupsettings-outputselection)" : String,
   "[ProgramDateTime](#cfn-medialive-channel-hlsgroupsettings-programdatetime)" : String,
+  "[ProgramDateTimeClock](#cfn-medialive-channel-hlsgroupsettings-programdatetimeclock)" : String,
   "[ProgramDateTimePeriod](#cfn-medialive-channel-hlsgroupsettings-programdatetimeperiod)" : Integer,
   "[RedundantManifest](#cfn-medialive-channel-hlsgroupsettings-redundantmanifest)" : String,
   "[SegmentationMode](#cfn-medialive-channel-hlsgroupsettings-segmentationmode)" : String,
@@ -97,6 +98,7 @@ To declare this entity in your AWS CloudFormation template, use the following sy
   [Mode](#cfn-medialive-channel-hlsgroupsettings-mode): String
   [OutputSelection](#cfn-medialive-channel-hlsgroupsettings-outputselection): String
   [ProgramDateTime](#cfn-medialive-channel-hlsgroupsettings-programdatetime): String
+  [ProgramDateTimeClock](#cfn-medialive-channel-hlsgroupsettings-programdatetimeclock): String
   [ProgramDateTimePeriod](#cfn-medialive-channel-hlsgroupsettings-programdatetimeperiod): Integer
   [RedundantManifest](#cfn-medialive-channel-hlsgroupsettings-redundantmanifest): String
   [SegmentationMode](#cfn-medialive-channel-hlsgroupsettings-segmentationmode): String
@@ -299,6 +301,12 @@ MANIFESTSANDSEGMENTS: Generates manifests \(the master manifest, if applicable, 
 
 `ProgramDateTime`  <a name="cfn-medialive-channel-hlsgroupsettings-programdatetime"></a>
 Includes or excludes the EXT\-X\-PROGRAM\-DATE\-TIME tag in \.m3u8 manifest files\. The value is calculated as follows: Either the program date and time are initialized using the input timecode source, or the time is initialized using the input timecode source and the date is initialized using the timestampOffset\.  
+*Required*: No  
+*Type*: String  
+*Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
+
+`ProgramDateTimeClock`  <a name="cfn-medialive-channel-hlsgroupsettings-programdatetimeclock"></a>
+Specifies the algorithm used to drive the HLS EXT\-X\-PROGRAM\-DATE\-TIME clock\. Options include: INITIALIZE\_FROM\_OUTPUT\_TIMECODE: The PDT clock is initialized as a function of the first output timecode, then incremented by the EXTINF duration of each encoded segment\. SYSTEM\_CLOCK: The PDT clock is initialized as a function of the UTC wall clock, then incremented by the EXTINF duration of each encoded segment\. If the PDT clock diverges from the wall clock by more than 500ms, it is resynchronized to the wall clock\.  
 *Required*: No  
 *Type*: String  
 *Update requires*: [No interruption](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-update-behaviors.html#update-no-interrupt)
